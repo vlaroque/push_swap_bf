@@ -17,8 +17,12 @@ SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH)\/$(PUSH_PATH)\/,$(SRC_PUSH))$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
 SRC_PUSH	Makefile	/^SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \\$/;"	m
 a	inc/push_swap.h	/^	t_list *a;$/;"	m	struct:s_tab
+a_to_b	src/push_swap/algorithm.c	/^int		a_to_b(t_tab *tab)$/;"	f
 add_to_list	src/push_swap/init.c	/^int		add_to_list(t_list *list, int nbr)$/;"	f
+algo	src/push_swap/algorithm.c	/^int		algo(t_tab *tab)$/;"	f
 b	inc/push_swap.h	/^	t_list *b;$/;"	m	struct:s_tab
+check_under_pivot	src/push_swap/algorithm.c	/^int		check_under_pivot(t_list *list, int pivot)$/;"	f
+choose_pivot	src/push_swap/algorithm.c	/^int		choose_pivot(t_list *list)$/;"	f
 data	inc/push_swap.h	/^	int		data;$/;"	m	struct:s_elem
 free_list	src/push_swap/init_errors.c	/^void	free_list(t_list *list)$/;"	f
 index	inc/push_swap.h	/^	int		index;$/;"	m	struct:s_elem
