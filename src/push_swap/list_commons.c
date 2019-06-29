@@ -25,7 +25,9 @@ void		print_tabs(t_tab *tab)
 		if (elem->prev->next->nbr != elem->nbr
 				|| elem->next->prev->nbr != elem->nbr)
 			printf("!pb!\n");
-		printf("%5d ", elem->nbr);
+		if (elem->data == PIVOT)
+			printf("!");
+		printf(" (%d) %-5d ",elem->index, elem->nbr);
 		elem = elem->next;
 	}
 	printf("\n");
@@ -34,7 +36,9 @@ void		print_tabs(t_tab *tab)
 	printf("B = ");
 	while(++i < tab->b->size)
 	{
-		printf("%5d ", elem->nbr);
+		if (elem->data == PIVOT)
+			printf("!");
+		printf(" (%d) %-5d ",elem->index, elem->nbr);
 		elem = elem->next;
 	}
 	printf("\n");

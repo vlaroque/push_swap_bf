@@ -1,69 +1,122 @@
 #include "push_swap.h"
+
 /*
- * WARNING all pivot var are in reality for the index !
+ * WARNING all pivot variables are in reality for the index !
  */
-
-int		dist_to_next_less_pivot(t_list *list, int pivot)
-{
-	t_elem	*head;
-	int		dist;
-	int		res;
-
-	dist = 0;
-	while (head->data != PIVOT)
-	{
-		if(head->nbr <= pivot)
-			res = dist;
-		head = head->next;
-		dist++;
-	}
-	return (res);
-}
-
-int		choose_pivot(t_list *list)
-{
-	t_elem	*head;
-	int		min;
-	int		max;
-
-	head = list->start;
-	min = head->nbr;
-	max = head->nbr;
-	while (head->data != PIVOT)
-	{
-		if (head->nbr < min)
-			min = head->nbr;
-		if (head->nbr > max)
-			max = head->nbr;
-		head = head->next;
-		if (head == list->start)
-			break ;
-	}
-	return ((min + max) / 2)
-}
 
 /*
  * commence sur une case non pivot, jusqu'au prochain
  */
+
+int		a_rev_rotation(t_tab *tab)
+{
+	t_elem *elem;
+
+	printf("      >>> A REV_ROTATION <<<\n");
+	while(tab->a->start->prev->data != PIVOT)
+		revrotate_a(tab);
+	return (0);
+}
+
 int		a_to_b(t_tab *tab)
 {
-	int		pivot;
-	int		dist;
+	static int	first = 0;
+	int			pivot;
+	int			dist;
 
-	pivot = choose_pivot(tab->a->start);
-	dist = dist_to_next_less_pivot(tab->a, pivot)
+	printf("     >>> A TO B <<<\n");
+	pivot = choose_pivot(tab->a);
+	dist = dist_pivot(tab->a, pivot, '-');
 	while (dist >= 0)
 	{
 		if (tab->a->start->index <= pivot)
 		{
-			push(tab->a, tab->b);
+			printf("     PUSH a >>> b | index = %d\n", tab->a->start->index);
+			push_b(tab);
+			if(tab->b->start->index == pivot)
+				rotate_b(tab);
 		}
-		rotate(tab->a);
+		else
+			rotate_a(tab);
 		dist--;
 	}
+	if (first)
+		a_rev_rotation(tab);
+	first = 1;
+	return (1);
+}
+
+int		b_to_a(t_tab *tab)
+{
+	int		pivot;
+	int		dist;
+	
+	printf("     >>> B TO A <<<\n");
+	pivot = choose_pivot(tab->b);
+	dist = best_dist(dist_pivot(tab->b, pivot, '+'), 999999);
+	while (dist >= 0)
+	{
+		if(tab->b->start->index >= pivot)
+		{
+			printf("     PUSH b >>> a | index = %d\n", tab->b->start->index);
+			push_a(tab);
+			if(tab->a->start->index == pivot)
+				rotate_a(tab);
+		}
+		else if (dist > 0)
+			rotate_b(tab);
+		else if (dist < 0)
+			revrotate_b(tab);
+		//if (dist > 0)
+			dist--;
+		//else
+		//	dist++;
+	}
+	return (1);
+}
+
+int		a_rotation(t_tab *tab)
+{
+	t_elem *elem;
+
+	printf("A_ROTATION ");
+	while(tab->a->start->data == PIVOT)
+	{
+		printf(" ONE");
+		rotate_a(tab);
+		if(tab->a->start->index == 0)
+		{
+			printf("index == 0!\n");
+			return (1);
+		}
+	}
+	printf("\n");
+	return (0);
 }
 
 int		algo(t_tab *tab)
 {
+	printf("in algo \n");
+	while (1)
+	{
+		a_to_b(tab);
+		print_tabs(tab);
+		printf("in alogo while 01\n");
+		while (tab->b->size > 0)
+		{
+				printf("in alogo while by while %d\n", tab->b->size);
+			b_to_a(tab);
+			revrotate_a(tab);
+			is_pivot(tab->a->start);
+			print_tabs(tab);
+		}
+		printf("in alogo while 02\n");
+		//if (is_ordered(tab->a))
+		//	return (1);
+		printf("isnotordered\n");
+		if (a_rotation(tab))
+			return (1);
+		printf("in alogo while\n");
+	}
 	
 }

@@ -11,25 +11,32 @@ NAME1	Makefile	/^NAME1 = push_swap$/;"	m
 NAME2	Makefile	/^NAME2 = checker$/;"	m
 OBJ	Makefile	/^OBJ = $(addprefix $(OBJ_PATH)\/,$(SRC_PUSH:.c=.o))$/;"	m
 OBJ_PATH	Makefile	/^OBJ_PATH = obj$/;"	m
+PIVOT	inc/push_swap.h	/^# define PIVOT /;"	d
 PUSH_PATH	Makefile	/^PUSH_PATH = push_swap$/;"	m
 PUSH_SWAP_H	inc/push_swap.h	/^# define PUSH_SWAP_H$/;"	d
 SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH)\/$(PUSH_PATH)\/,$(SRC_PUSH))$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
 SRC_PUSH	Makefile	/^SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \\$/;"	m
 a	inc/push_swap.h	/^	t_list *a;$/;"	m	struct:s_tab
+a_rev_rotation	src/push_swap/algorithm.c	/^int		a_rev_rotation(t_tab *tab)$/;"	f
+a_rotation	src/push_swap/algorithm.c	/^int		a_rotation(t_tab *tab)$/;"	f
 a_to_b	src/push_swap/algorithm.c	/^int		a_to_b(t_tab *tab)$/;"	f
 add_to_list	src/push_swap/init.c	/^int		add_to_list(t_list *list, int nbr)$/;"	f
 algo	src/push_swap/algorithm.c	/^int		algo(t_tab *tab)$/;"	f
 b	inc/push_swap.h	/^	t_list *b;$/;"	m	struct:s_tab
-check_under_pivot	src/push_swap/algorithm.c	/^int		check_under_pivot(t_list *list, int pivot)$/;"	f
+b_to_a	src/push_swap/algorithm.c	/^int		b_to_a(t_tab *tab)$/;"	f
+best_dist	src/push_swap/algo_distances.c	/^int		best_dist(int pos, int neg)$/;"	f
 choose_pivot	src/push_swap/algorithm.c	/^int		choose_pivot(t_list *list)$/;"	f
 data	inc/push_swap.h	/^	int		data;$/;"	m	struct:s_elem
+dist_neg_pivot	src/push_swap/algo_distances.c	/^int		dist_neg_pivot(t_list *list, int pivot)$/;"	f
+dist_pivot	src/push_swap/algo_distances.c	/^int		dist_pivot(t_list *list, int pivot, char p_m)$/;"	f
 free_list	src/push_swap/init_errors.c	/^void	free_list(t_list *list)$/;"	f
 index	inc/push_swap.h	/^	int		index;$/;"	m	struct:s_elem
 indexator	src/push_swap/init_check.c	/^int		indexator(t_list *list)$/;"	f
 init	src/push_swap/init.c	/^t_list	*init(int ac, char **av)$/;"	f
 init_empty_list	src/push_swap/list_commons.c	/^t_list		*init_empty_list(void)$/;"	f
 is_ordered	src/push_swap/init_check.c	/^int		is_ordered(t_list *list)$/;"	f
+is_pivot	src/push_swap/algorithm.c	/^void	is_pivot(t_elem *elem)$/;"	f
 main	src/push_swap/push_swap.c	/^int		main(int ac, char **av)$/;"	f
 nbr	inc/push_swap.h	/^	int		nbr;$/;"	m	struct:s_elem
 next	inc/push_swap.h	/^	t_elem	*next;$/;"	m	struct:s_elem

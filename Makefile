@@ -6,7 +6,7 @@
 #    By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/06/21 05:31:35 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/06/29 12:55:37 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,14 @@
 NAME1 = push_swap
 NAME2 = checker
 CC = clang
+CFLAGS = -g
 
 # SOURCES
 
 SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \
-		   list_commons.c list_operations.c
+	   list_commons.c list_operations.c algorithm.c algo_distances.c \
+	   algo_pivot.c \
+	   op_p_s.c op_r_rr.c op_rrr.c
 
 # PATH
 

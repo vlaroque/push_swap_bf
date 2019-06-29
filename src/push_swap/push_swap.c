@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/06/21 16:54:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/06/27 20:55:44 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,7 @@ int		main(int ac, char **av)
 	tab.b = init_empty_list();
 	ptr = &tab;
 	print_tabs(ptr);
-	rotate(ptr->a);
-	print_tabs(ptr);
-	push(ptr->a, ptr->b);
-	print_tabs(ptr);
-	rev_rotate(ptr->a);
-	print_tabs(ptr);
-	swap(ptr->a);
-	print_tabs(ptr);
-	printlist(ptr->a);
-	push(ptr->b, ptr->a);
+	algo(ptr);
 	print_tabs(ptr);
 	return (0);
 }
