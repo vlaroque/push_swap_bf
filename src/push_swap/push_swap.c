@@ -23,7 +23,7 @@ int		main(int ac, char **av)
 	t_tab	tab;
 	t_tab	*ptr;
 
-	if(!(tab.a = init(ac, av)))
+	if (!(tab.a = init(ac, av)))
 		return (0); /* ajouter l'erreur */
 	tab.b = init_empty_list();
 	ptr = &tab;

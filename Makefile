@@ -14,7 +14,7 @@
 
 NAME1 = push_swap
 NAME2 = checker
-CC = clang
+CC = gcc
 CFLAGS = -g
 
 # SOURCES

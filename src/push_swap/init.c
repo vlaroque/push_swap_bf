@@ -74,8 +74,8 @@ int		read_arg_atoi(char *str, int *i, int *nbptr)
 
 int		read_arg(t_list *list, char *str)
 {
-	int i;
-	int  nbr;
+	int	i;
+	int	nbr;
 
 	i = 0;
 	while(str[i])
@@ -85,7 +85,7 @@ int		read_arg(t_list *list, char *str)
 		if(add_to_list(list, nbr))
 			return (-1);
 	}
-	return(0);
+	return (0);
 }
 
 t_list	*init(int ac, char **av)
@@ -106,7 +106,11 @@ t_list	*init(int ac, char **av)
 		}
 		i++;
 	}
-	post_op(list);
+	if (!(post_op(list)))
+	{
+		free_list(list);
+		return (NULL);
+	}
 //	printlist(list);
 	return (list);
 }

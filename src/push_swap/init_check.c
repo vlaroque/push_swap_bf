@@ -47,15 +47,17 @@ int		is_ordered(t_list *list)
 	{
 		if (elem->nbr > elem->next->nbr)
 			return (0);
+		elem = elem->next;
 		i++;
 	}
+	printf("is_ordered!\n");
 	return (1);
 }
 
 int		post_op(t_list *list)
 {
 	if (is_ordered(list))
-		return (-1);
+		return (0);
 	indexator(list);
 	return (1);
 }

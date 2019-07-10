@@ -3,17 +3,18 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
-CC	Makefile	/^CC = clang$/;"	m
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g$/;"	m
 HEADER_PATH	Makefile	/^HEADER_PATH = inc$/;"	m
 INC_PATH	Makefile	/^INC_PATH = inc$/;"	m
 NAME1	Makefile	/^NAME1 = push_swap$/;"	m
 NAME2	Makefile	/^NAME2 = checker$/;"	m
 OBJ	Makefile	/^OBJ = $(addprefix $(OBJ_PATH)\/,$(SRC_PUSH:.c=.o))$/;"	m
 OBJ_PATH	Makefile	/^OBJ_PATH = obj$/;"	m
-PIVOT	inc/push_swap.h	/^# define PIVOT /;"	d
+PIVOT	inc/push_swap.h	5;"	d
 PUSH_PATH	Makefile	/^PUSH_PATH = push_swap$/;"	m
-PUSH_SWAP_H	inc/push_swap.h	/^# define PUSH_SWAP_H$/;"	d
+PUSH_SWAP_H	inc/push_swap.h	2;"	d
 SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH)\/$(PUSH_PATH)\/,$(SRC_PUSH))$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
 SRC_PUSH	Makefile	/^SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \\$/;"	m
@@ -26,7 +27,7 @@ algo	src/push_swap/algorithm.c	/^int		algo(t_tab *tab)$/;"	f
 b	inc/push_swap.h	/^	t_list *b;$/;"	m	struct:s_tab
 b_to_a	src/push_swap/algorithm.c	/^int		b_to_a(t_tab *tab)$/;"	f
 best_dist	src/push_swap/algo_distances.c	/^int		best_dist(int pos, int neg)$/;"	f
-choose_pivot	src/push_swap/algorithm.c	/^int		choose_pivot(t_list *list)$/;"	f
+choose_pivot	src/push_swap/algo_pivot.c	/^int		choose_pivot(t_list *list)$/;"	f
 data	inc/push_swap.h	/^	int		data;$/;"	m	struct:s_elem
 dist_neg_pivot	src/push_swap/algo_distances.c	/^int		dist_neg_pivot(t_list *list, int pivot)$/;"	f
 dist_pivot	src/push_swap/algo_distances.c	/^int		dist_pivot(t_list *list, int pivot, char p_m)$/;"	f
@@ -36,7 +37,7 @@ indexator	src/push_swap/init_check.c	/^int		indexator(t_list *list)$/;"	f
 init	src/push_swap/init.c	/^t_list	*init(int ac, char **av)$/;"	f
 init_empty_list	src/push_swap/list_commons.c	/^t_list		*init_empty_list(void)$/;"	f
 is_ordered	src/push_swap/init_check.c	/^int		is_ordered(t_list *list)$/;"	f
-is_pivot	src/push_swap/algorithm.c	/^void	is_pivot(t_elem *elem)$/;"	f
+is_pivot	src/push_swap/algo_pivot.c	/^void	is_pivot(t_elem *elem)$/;"	f
 main	src/push_swap/push_swap.c	/^int		main(int ac, char **av)$/;"	f
 nbr	inc/push_swap.h	/^	int		nbr;$/;"	m	struct:s_elem
 next	inc/push_swap.h	/^	t_elem	*next;$/;"	m	struct:s_elem
@@ -46,17 +47,28 @@ prev	inc/push_swap.h	/^	t_elem	*prev;$/;"	m	struct:s_elem
 print_tabs	src/push_swap/list_commons.c	/^void		print_tabs(t_tab *tab)$/;"	f
 printlist	src/push_swap/init_errors.c	/^void	printlist(t_list *list)$/;"	f
 push	src/push_swap/list_operations.c	/^int		push(t_list *from, t_list *to)$/;"	f
+push_a	src/push_swap/op_p_s.c	/^int		push_a(t_tab *tab)$/;"	f
+push_b	src/push_swap/op_p_s.c	/^int		push_b(t_tab *tab)$/;"	f
 quick_sort	src/push_swap/quicksort.c	/^void	quick_sort(t_elem **tab, int first, int last)$/;"	f
 read_arg	src/push_swap/init.c	/^int		read_arg(t_list *list, char *str)$/;"	f
 read_arg_atoi	src/push_swap/init.c	/^int		read_arg_atoi(char *str, int *i, int *nbptr)$/;"	f
 rev_rotate	src/push_swap/list_operations.c	/^int		rev_rotate(t_list *list)$/;"	f
+revrotate_a	src/push_swap/op_r_rr.c	/^int		revrotate_a(t_tab *tab)$/;"	f
+revrotate_b	src/push_swap/op_r_rr.c	/^int		revrotate_b(t_tab *tab)$/;"	f
 rotate	src/push_swap/list_operations.c	/^int		rotate(t_list *list)$/;"	f
+rotate_a	src/push_swap/op_r_rr.c	/^int		rotate_a(t_tab *tab)$/;"	f
+rotate_b	src/push_swap/op_r_rr.c	/^int		rotate_b(t_tab *tab)$/;"	f
+rrevrotate	src/push_swap/op_rrr.c	/^int		rrevrotate(t_tab *tab)$/;"	f
+rrotate	src/push_swap/op_rrr.c	/^int		rrotate(t_tab *tab)$/;"	f
 s_elem	inc/push_swap.h	/^struct	s_elem$/;"	s
 s_list	inc/push_swap.h	/^typedef struct	s_list$/;"	s
 s_tab	inc/push_swap.h	/^typedef struct	s_tab$/;"	s
 size	inc/push_swap.h	/^	int		size;$/;"	m	struct:s_list
+sswap	src/push_swap/op_p_s.c	/^int		sswap(t_tab *tab)$/;"	f
 start	inc/push_swap.h	/^	t_elem	*start;$/;"	m	struct:s_list
 swap	src/push_swap/list_operations.c	/^int		swap(t_list *list)$/;"	f
+swap_a	src/push_swap/op_p_s.c	/^int		swap_a(t_tab *tab)$/;"	f
+swap_b	src/push_swap/op_p_s.c	/^int		swap_b(t_tab *tab)$/;"	f
 swap_p	src/push_swap/quicksort.c	/^static void swap_p(t_elem **a, t_elem **b)$/;"	f	file:
 t_elem	inc/push_swap.h	/^typedef	struct s_elem t_elem;$/;"	t	typeref:struct:s_elem
 t_list	inc/push_swap.h	/^}				t_list;$/;"	t	typeref:struct:s_list
