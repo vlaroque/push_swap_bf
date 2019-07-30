@@ -29,20 +29,20 @@ static int	head_operations(t_tab *tab)
 
 int		a_swaper(t_tab *tab)
 {
-	if (head_operations(t_tab tab))
+	if (head_operations(tab))
 		return (1);
 	while(1)
 	{
 		while(tab->a->start->next->next->data != PIVOT)
 		{
 			rotate_a(tab);
-			if (head_operations(t_tab tab))
+			if (head_operations(tab))
 				return (1);
 		}
 		while(tab->a->start->prev->data != PIVOT)
 		{
 			revrotate_a(tab);
-			if (head_operations(t_tab tab))
+			if (head_operations(tab))
 				return (1);
 		}
 	}
