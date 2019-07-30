@@ -24,7 +24,7 @@ int		choose_pivot(t_list *list)
 		if (head == list->start)
 			break ;
 	}
-	printf("pivot (%D %D) = %d\n", min, max, (min + max) / 2);
+//	printf("pivot (%D %D) = %d\n", min, max, (min + max) / 2);
 	return ((min + max) / 2);
 }
 

@@ -42,7 +42,7 @@ int		dist_pivot(t_list *list, int pivot, char p_m)
 		if (head == list->start)
 			break ;
 	}
-	printf("dist pivot = %d\n", res);
+//	printf("dist pivot = %d\n", res);
 	return (res);
 }
 
