@@ -46,6 +46,13 @@ int		a_to_b(t_tab *tab)
 
 	pivot = choose_pivot(tab->a);
 	dist = dist_pivot(tab->a, pivot, '-');
+	if (dist <= 3 && !(first))
+	{
+//		print_tabs(tab);
+		a_swaper(tab);
+//		print_tabs(tab);
+		return (1);
+	}
 	while (dist >= 0)
 	{
 		if (tab->a->start->index <= pivot)

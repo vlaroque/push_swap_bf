@@ -21,7 +21,7 @@ CFLAGS = -g
 
 SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \
 	   list_commons.c list_operations.c algorithm.c algo_distances.c \
-	   algo_pivot.c \
+	   algo_pivot.c algo_swaper.c\
 	   op_p_s.c op_r_rr.c op_rrr.c algo_insort.c
 
 # PATH

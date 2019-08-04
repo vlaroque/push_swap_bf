@@ -1,5 +1,9 @@
 #include "push_swap.h"
 
+/*
+ * INSERT SORT OF B PILE
+ */
+
 static int	min_max(t_tab *tab, int *min, int *max)
 {
 	t_elem	*head;

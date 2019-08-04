@@ -69,7 +69,9 @@ int		dist_neg_pivot(t_list *list, int pivot); /* a refaire */
 int		dist_pivot(t_list *list, int pivot, char p_m);
 int		best_dist(int pos, int neg);
 
-/* algo_insort*/
+/* algo_insort */
 int			b_to_a_insort(t_tab *tab);
 
+/* algo_swaper */
+int		a_swaper(t_tab *tab);
 #endif	
