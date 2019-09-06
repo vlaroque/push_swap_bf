@@ -1,6 +1,6 @@
-#include "header.h"
+#include "bf_header.h"
 
-int		is_sorted(t_tabs *tab)
+int		bf_is_sorted(t_tabs *tab)
 {
 	int i;
 	int revro;
@@ -11,7 +11,7 @@ int		is_sorted(t_tabs *tab)
 	{
 		while (revro > 1)
 		{
-			revrotate_a(tab);
+			bf_revrotate_a(tab);
 			revro >>= 1;
 		}
 	}
@@ -26,7 +26,7 @@ int		is_sorted(t_tabs *tab)
 	return (1);
 }
 
-int		seed_try(t_tabs *tab, int *seed)
+int		bf_seed_try(t_tabs *tab, int *seed)
 {
 	int		i;
 	t_tabs	save;
@@ -40,34 +40,34 @@ int		seed_try(t_tabs *tab, int *seed)
 	while (seed[i])
 	{
 		if (seed[i] & PB)
-			res = push_b(try);
+			res = bf_push_b(try);
 		else if (seed[i] & PA)
-			res = push_a(try);
+			res = bf_push_a(try);
 		else if (seed[i] & RA)
-			res = rotate_a(try);
+			res = bf_rotate_a(try);
 		else if (seed[i] & RB)
-			res = rotate_b(try);
+			res = bf_rotate_b(try);
 		else if (seed[i] & RR)
-			res = rotate_ab(try);
+			res = bf_rotate_ab(try);
 		else if (seed[i] & RRA)
-			res = revrotate_a(try);
+			res = bf_revrotate_a(try);
 		else if (seed[i] & RRB)
-			res = revrotate_b(try);
+			res = bf_revrotate_b(try);
 		else if (seed[i] & RRR)
-			res = revrotate_ab(try);
+			res = bf_revrotate_ab(try);
 		else if (seed[i] & SA)
-			res = swap_a(try);
+			res = bf_swap_a(try);
 		else if (seed[i] & SB)
-			res = swap_b(try);
+			res = bf_swap_b(try);
 		else if (seed[i] & SS)
-			res = swap_ab(try);
+			res = bf_swap_ab(try);
 		else
 			return (printf("FTW\n"));
 		if (res == 0)
 			return (0);
 		i++;
 	}
-	if (is_sorted(try))
+	if (bf_is_sorted(try))
 	{
 		printf("tab = ");
 		bf_printtab(try);
@@ -79,14 +79,14 @@ int		seed_try(t_tabs *tab, int *seed)
 	return (0);
 }
 
-int		seed_generator(t_tabs *tab, int *seed, int head, int len)
+int		bf_seed_generator(t_tabs *tab, int *seed, int head, int len)
 {
 	int		op;
 
 	op = 1;
 	if (head == len)
 	{
-		if (seed_try(tab, seed))
+		if (bf_seed_try(tab, seed))
 		{
 			bf_printseed(seed);
 			return (1);
@@ -98,7 +98,7 @@ int		seed_generator(t_tabs *tab, int *seed, int head, int len)
 		while (op < END)
 		{
 			seed[head] = op;
-			if (seed_generator(tab, seed, head + 1, len))
+			if (bf_seed_generator(tab, seed, head + 1, len))
 				return (1);
 			op <<= 1;
 		}
@@ -114,7 +114,7 @@ int		bruteforce(t_tabs *tab)
 	seedlen = 0;
 	while(seedlen < 10)
 	{
-		if(seed_generator(tab, seed, 0, seedlen))
+		if(bf_seed_generator(tab, seed, 0, seedlen))
 			break ;
 		seedlen++;
 	}

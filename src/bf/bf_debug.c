@@ -1,4 +1,4 @@
-#include "header.h"
+#include "bf_header.h"
 
 int		bf_printseed(int *seed)
 {
@@ -34,7 +34,7 @@ int		bf_printseed(int *seed)
 	printf("\n");
 }
 
-int     bf_printtab(t_tabs *tab)
+int		bf_printtab(t_tabs *tab)
 {
 	int i;
 	int head;

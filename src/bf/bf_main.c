@@ -1,4 +1,4 @@
-#include "header.h"
+#include "bf_header.h"
 
 int     usefull_cmb(int *cmb, int head)
 {
