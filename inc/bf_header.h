@@ -31,8 +31,12 @@ int		bf_swap_b(t_tabs *tab);
 int		bf_swap_ab(t_tabs *tab);
 
 int		init_bf(int *cmb, int len);
-int		bruteforce(t_tabs *tab);
+int		bruteforce(t_tabs *tab, int *seed);
 int		rec_bruteforce(t_tabs *tab);
+
+int		init_a_unlocked_bf(int *cmb, int len, t_tab *tab);
+int		init_a_locked_bf(int *cmb, int len, t_tab *tab);
+int		init_b_locked_bf(int *cmb, int len, t_tab *tab);
 
 int		bf_printtab(t_tabs *tab);
 int		bf_printseed(int *seed);

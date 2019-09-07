@@ -89,9 +89,8 @@ int		rec_try(t_tabs tab, int *seed, int head, int len)
 	return (0);
 }
 
-int		rec_bruteforce(t_tabs *tab)
+int		rec_bruteforce(t_tabs *tab, int *seed)
 {
-	int	seed[SEEDLEN] = {0};
 	int seedlen;
 
 	seedlen = 0;

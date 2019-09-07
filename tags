@@ -4,61 +4,80 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BF_PATH	Makefile	/^BF_PATH = bf$/;"	m
 CC	Makefile	/^CC = gcc$/;"	m
-CC	src/bruteforcing/Makefile	/^CC = gcc$/;"	m
+CC	src/bf/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -g$/;"	m
-CFLAGS	src/bruteforcing/Makefile	/^CFLAGS = -Wall -Wextra$/;"	m
+CFLAGS	src/bf/Makefile	/^CFLAGS = -Wall -Wextra$/;"	m
 CMBLENMAX	inc/bf_header.h	6;"	d
-END	inc/bf_header.h	54;"	d
+END	inc/bf_header.h	52;"	d
 HEADER_H	inc/bf_header.h	2;"	d
 HEADER_PATH	Makefile	/^HEADER_PATH = inc$/;"	m
+INC	src/bf/Makefile	/^INC = ..\/..\/inc$/;"	m
 INC_PATH	Makefile	/^INC_PATH = inc$/;"	m
-NAME	src/bruteforcing/Makefile	/^NAME = bruteforce$/;"	m
+NAME	src/bf/Makefile	/^NAME = bruteforce$/;"	m
 NAME1	Makefile	/^NAME1 = push_swap$/;"	m
 NAME2	Makefile	/^NAME2 = checker$/;"	m
-OBJ	Makefile	/^OBJ = $(addprefix $(OBJ_PATH)\/,$(SRC_PUSH:.c=.o))$/;"	m
-OBJ	src/bruteforcing/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	Makefile	/^OBJ = $(addprefix $(OBJ_PATH)\/,$(SRC_FILES:.c=.o))$/;"	m
+OBJ	src/bf/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ_PATH	Makefile	/^OBJ_PATH = obj$/;"	m
-PA	inc/bf_header.h	44;"	d
-PB	inc/bf_header.h	43;"	d
+PA	inc/bf_header.h	42;"	d
+PB	inc/bf_header.h	41;"	d
 PIVOT	inc/push_swap.h	5;"	d
 PUSH_PATH	Makefile	/^PUSH_PATH = push_swap$/;"	m
 PUSH_SWAP_H	inc/push_swap.h	2;"	d
-RA	inc/bf_header.h	45;"	d
-RB	inc/bf_header.h	46;"	d
-RR	inc/bf_header.h	47;"	d
-RRA	inc/bf_header.h	48;"	d
-RRB	inc/bf_header.h	49;"	d
-RRR	inc/bf_header.h	50;"	d
-SA	inc/bf_header.h	51;"	d
-SB	inc/bf_header.h	52;"	d
+RA	inc/bf_header.h	43;"	d
+RB	inc/bf_header.h	44;"	d
+RR	inc/bf_header.h	45;"	d
+RRA	inc/bf_header.h	46;"	d
+RRB	inc/bf_header.h	47;"	d
+RRR	inc/bf_header.h	48;"	d
+SA	inc/bf_header.h	49;"	d
+SB	inc/bf_header.h	50;"	d
 SEEDLEN	inc/bf_header.h	7;"	d
-SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH)\/$(PUSH_PATH)\/,$(SRC_PUSH))$/;"	m
-SRC	src/bruteforcing/Makefile	/^SRC = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c main.c bf_recursive_bruteforce.c$/;"	m
+SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH)\/,$(SRC_FILES))$/;"	m
+SRC	src/bf/Makefile	/^SRC = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c bf_main.c bf_recursive_bruteforce.c$/;"	m
+SRC_BF	Makefile	/^SRC_BF = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c \\$/;"	m
+SRC_FILES	Makefile	/^SRC_FILES = $(addprefix $(PUSH_PATH)\/,$(SRC_PUSH))$/;"	m
+SRC_FILES_ONLY	Makefile	/^SRC_FILES_ONLY = $(SRC_PUSH) $(SRC_BF)$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
 SRC_PUSH	Makefile	/^SRC_PUSH = init.c init_check.c init_errors.c push_swap.c quicksort.c \\$/;"	m
-SS	inc/bf_header.h	53;"	d
+SS	inc/bf_header.h	51;"	d
 TABLEN	inc/bf_header.h	8;"	d
-a	inc/bf_header.h	/^    int a[TABLEN];$/;"	m	struct:s_tabs
+a	inc/bf_header.h	/^	int a[TABLEN];$/;"	m	struct:s_tabs
 a	inc/push_swap.h	/^	t_list *a;$/;"	m	struct:s_tab
-a_head	inc/bf_header.h	/^    int a_head;$/;"	m	struct:s_tabs
+a_head	inc/bf_header.h	/^	int a_head;$/;"	m	struct:s_tabs
 a_lock	inc/bf_header.h	/^	int a_lock;$/;"	m	struct:s_tabs
-a_max	inc/bf_header.h	/^    int a_max;$/;"	m	struct:s_tabs
+a_max	inc/bf_header.h	/^	int a_max;$/;"	m	struct:s_tabs
 a_rev_rotation	src/push_swap/algorithm.c	/^int		a_rev_rotation(t_tab *tab)$/;"	f
 a_rotation	src/push_swap/algorithm.c	/^int		a_rotation(t_tab *tab)$/;"	f
 a_swaper	src/push_swap/algo_swaper.c	/^int		a_swaper(t_tab *tab)$/;"	f
 a_to_b	src/push_swap/algorithm.c	/^int		a_to_b(t_tab *tab)$/;"	f
 add_to_list	src/push_swap/init.c	/^int		add_to_list(t_list *list, int nbr)$/;"	f
 algo	src/push_swap/algorithm.c	/^int		algo(t_tab *tab)$/;"	f
-b	inc/bf_header.h	/^    int b[TABLEN];$/;"	m	struct:s_tabs
+b	inc/bf_header.h	/^	int b[TABLEN];$/;"	m	struct:s_tabs
 b	inc/push_swap.h	/^	t_list *b;$/;"	m	struct:s_tab
-b_max	inc/bf_header.h	/^    int b_max;$/;"	m	struct:s_tabs
+b_max	inc/bf_header.h	/^	int b_max;$/;"	m	struct:s_tabs
 b_to_a	src/push_swap/algorithm.c	/^int		b_to_a(t_tab *tab)$/;"	f
 b_to_a_insort	src/push_swap/algo_insort.c	/^int			b_to_a_insort(t_tab *tab)$/;"	f
 best_dist	src/push_swap/algo_distances.c	/^int		best_dist(int pos, int neg)$/;"	f
-bf_printseed	src/bf_debug.c	/^int		bf_printseed(int *seed)$/;"	f
-bf_printtab	src/bf_debug.c	/^int     bf_printtab(t_tabs *tab)$/;"	f
-bruteforce	src/bf_bruteforce.c	/^int		bruteforce(t_tabs *tab)$/;"	f
+bf_is_sorted	src/bf/bf_bruteforce.c	/^int		bf_is_sorted(t_tabs *tab)$/;"	f
+bf_printseed	src/bf/bf_debug.c	/^int		bf_printseed(int *seed)$/;"	f
+bf_printtab	src/bf/bf_debug.c	/^int		bf_printtab(t_tabs *tab)$/;"	f
+bf_push_a	src/bf/bf_op.c	/^int		bf_push_a(t_tabs *tab)$/;"	f
+bf_push_b	src/bf/bf_op.c	/^int		bf_push_b(t_tabs *tab)$/;"	f
+bf_revrotate_a	src/bf/bf_op.c	/^int		bf_revrotate_a(t_tabs *tab)$/;"	f
+bf_revrotate_ab	src/bf/bf_op.c	/^int		bf_revrotate_ab(t_tabs *tab)$/;"	f
+bf_revrotate_b	src/bf/bf_op.c	/^int		bf_revrotate_b(t_tabs *tab)$/;"	f
+bf_rotate_a	src/bf/bf_op.c	/^int		bf_rotate_a(t_tabs *tab)$/;"	f
+bf_rotate_ab	src/bf/bf_op.c	/^int		bf_rotate_ab(t_tabs *tab)$/;"	f
+bf_rotate_b	src/bf/bf_op.c	/^int		bf_rotate_b(t_tabs *tab)$/;"	f
+bf_seed_generator	src/bf/bf_bruteforce.c	/^int		bf_seed_generator(t_tabs *tab, int *seed, int head, int len)$/;"	f
+bf_seed_try	src/bf/bf_bruteforce.c	/^int		bf_seed_try(t_tabs *tab, int *seed)$/;"	f
+bf_swap_a	src/bf/bf_op.c	/^int		bf_swap_a(t_tabs *tab)$/;"	f
+bf_swap_ab	src/bf/bf_op.c	/^int		bf_swap_ab(t_tabs *tab)$/;"	f
+bf_swap_b	src/bf/bf_op.c	/^int		bf_swap_b(t_tabs *tab)$/;"	f
+bruteforce	src/bf/bf_bruteforce.c	/^int		bruteforce(t_tabs *tab)$/;"	f
 choose_pivot	src/push_swap/algo_pivot.c	/^int		choose_pivot(t_list *list)$/;"	f
 data	inc/push_swap.h	/^	int		data;$/;"	m	struct:s_elem
 dist_calc	src/push_swap/algo_insort.c	/^int static	dist_calc(t_tab *tab, int min, int max)$/;"	f	file:
@@ -69,22 +88,21 @@ head_operations	src/push_swap/algo_swaper.c	/^static int	head_operations(t_tab *
 index	inc/push_swap.h	/^	int		index;$/;"	m	struct:s_elem
 indexator	src/push_swap/init_check.c	/^int		indexator(t_list *list)$/;"	f
 init	src/push_swap/init.c	/^t_list	*init(int ac, char **av)$/;"	f
-init_a_locked_bf	src/bf_init.c	/^int     init_a_locked_bf(int *cmb, int len)$/;"	f
-init_a_unlocked_bf	src/bf_init.c	/^int     init_a_unlocked_bf(int *cmb, int len)$/;"	f
-init_b_locked_bf	src/bf_init.c	/^int     init_b_locked_bf(int *cmb, int len)$/;"	f
-init_bf	src/bf_init.c	/^int     init_bf(int *cmb, int len)$/;"	f
+init_a_locked_bf	src/bf/bf_init.c	/^int     init_a_locked_bf(int *cmb, int len)$/;"	f
+init_a_unlocked_bf	src/bf/bf_init.c	/^int     init_a_unlocked_bf(int *cmb, int len)$/;"	f
+init_b_locked_bf	src/bf/bf_init.c	/^int     init_b_locked_bf(int *cmb, int len)$/;"	f
+init_bf	src/bf/bf_init.c	/^int     init_bf(int *cmb, int len)$/;"	f
 init_empty_list	src/push_swap/list_commons.c	/^t_list		*init_empty_list(void)$/;"	f
 is_ordered	src/push_swap/init_check.c	/^int		is_ordered(t_list *list)$/;"	f
 is_pivot	src/push_swap/algo_pivot.c	/^void	is_pivot(t_elem *elem)$/;"	f
-is_sorted	src/bf_bruteforce.c	/^int		is_sorted(t_tabs *tab)$/;"	f
-main	src/bf_main.c	/^int     main(void)$/;"	f
+main	src/bf/bf_main.c	/^int     main(void)$/;"	f
 main	src/push_swap/push_swap.c	/^int		main(int ac, char **av)$/;"	f
-make_op	src/bf_recursive_bruteforce.c	/^int		make_op(t_tabs *tab, int op)$/;"	f
+make_op	src/bf/bf_recursive_bruteforce.c	/^int		make_op(t_tabs *tab, int op)$/;"	f
 min_max	src/push_swap/algo_insort.c	/^static int	min_max(t_tab *tab, int *min, int *max)$/;"	f	file:
 nbr	inc/push_swap.h	/^	int		nbr;$/;"	m	struct:s_elem
 next	inc/push_swap.h	/^	t_elem	*next;$/;"	m	struct:s_elem
-next_cmb	src/bf_main.c	/^int     next_cmb(int *cmb, int head, int len)$/;"	f
-op_usefull	src/bf_recursive_bruteforce.c	/^int		op_usefull(int	both_op)$/;"	f
+next_cmb	src/bf/bf_main.c	/^int     next_cmb(int *cmb, int head, int len)$/;"	f
+op_usefull	src/bf/bf_recursive_bruteforce.c	/^int		op_usefull(int	both_op)$/;"	f
 partition	src/push_swap/quicksort.c	/^static int partition(t_elem **tab, int first, int last, int pivot)$/;"	f	file:
 pivot_maker	src/push_swap/algorithm.c	/^int		pivot_maker(t_tab *tab)$/;"	f
 post_op	src/push_swap/init_check.c	/^int		post_op(t_list *list)$/;"	f
@@ -92,26 +110,26 @@ prev	inc/push_swap.h	/^	t_elem	*prev;$/;"	m	struct:s_elem
 print_tabs	src/push_swap/list_commons.c	/^void		print_tabs(t_tab *tab)$/;"	f
 printlist	src/push_swap/init_errors.c	/^void	printlist(t_list *list)$/;"	f
 push	src/push_swap/list_operations.c	/^int		push(t_list *from, t_list *to)$/;"	f
-push_a	src/bf_op.c	/^int		push_a(t_tabs *tab)$/;"	f
+push_a	bf_op.c	/^int		push_a(t_tabs *tab)$/;"	f
 push_a	src/push_swap/op_p_s.c	/^int		push_a(t_tab *tab)$/;"	f
-push_b	src/bf_op.c	/^int		push_b(t_tabs *tab)$/;"	f
+push_b	bf_op.c	/^int		push_b(t_tabs *tab)$/;"	f
 push_b	src/push_swap/op_p_s.c	/^int		push_b(t_tab *tab)$/;"	f
 quick_sort	src/push_swap/quicksort.c	/^void	quick_sort(t_elem **tab, int first, int last)$/;"	f
 read_arg	src/push_swap/init.c	/^int		read_arg(t_list *list, char *str)$/;"	f
 read_arg_atoi	src/push_swap/init.c	/^int		read_arg_atoi(char *str, int *i, int *nbptr)$/;"	f
-rec_bruteforce	src/bf_recursive_bruteforce.c	/^int		rec_bruteforce(t_tabs *tab)$/;"	f
-rec_try	src/bf_recursive_bruteforce.c	/^int		rec_try(t_tabs tab, int *seed, int head, int len)$/;"	f
+rec_bruteforce	src/bf/bf_recursive_bruteforce.c	/^int		rec_bruteforce(t_tabs *tab)$/;"	f
+rec_try	src/bf/bf_recursive_bruteforce.c	/^int		rec_try(t_tabs tab, int *seed, int head, int len)$/;"	f
 rev_rotate	src/push_swap/list_operations.c	/^int		rev_rotate(t_list *list)$/;"	f
-revrotate_a	src/bf_op.c	/^int		revrotate_a(t_tabs *tab)$/;"	f
+revrotate_a	bf_op.c	/^int		revrotate_a(t_tabs *tab)$/;"	f
 revrotate_a	src/push_swap/op_r_rr.c	/^int		revrotate_a(t_tab *tab)$/;"	f
-revrotate_ab	src/bf_op.c	/^int		revrotate_ab(t_tabs *tab)$/;"	f
-revrotate_b	src/bf_op.c	/^int		revrotate_b(t_tabs *tab)$/;"	f
+revrotate_ab	bf_op.c	/^int		revrotate_ab(t_tabs *tab)$/;"	f
+revrotate_b	bf_op.c	/^int		revrotate_b(t_tabs *tab)$/;"	f
 revrotate_b	src/push_swap/op_r_rr.c	/^int		revrotate_b(t_tab *tab)$/;"	f
 rotate	src/push_swap/list_operations.c	/^int		rotate(t_list *list)$/;"	f
-rotate_a	src/bf_op.c	/^int		rotate_a(t_tabs *tab)$/;"	f
+rotate_a	bf_op.c	/^int		rotate_a(t_tabs *tab)$/;"	f
 rotate_a	src/push_swap/op_r_rr.c	/^int		rotate_a(t_tab *tab)$/;"	f
-rotate_ab	src/bf_op.c	/^int		rotate_ab(t_tabs *tab)$/;"	f
-rotate_b	src/bf_op.c	/^int		rotate_b(t_tabs *tab)$/;"	f
+rotate_ab	bf_op.c	/^int		rotate_ab(t_tabs *tab)$/;"	f
+rotate_b	bf_op.c	/^int		rotate_b(t_tabs *tab)$/;"	f
 rotate_b	src/push_swap/op_r_rr.c	/^int		rotate_b(t_tab *tab)$/;"	f
 rrevrotate	src/push_swap/op_rrr.c	/^int		rrevrotate(t_tab *tab)$/;"	f
 rrotate	src/push_swap/op_rrr.c	/^int		rrotate(t_tab *tab)$/;"	f
@@ -119,20 +137,18 @@ s_elem	inc/push_swap.h	/^struct	s_elem$/;"	s
 s_list	inc/push_swap.h	/^typedef struct	s_list$/;"	s
 s_tab	inc/push_swap.h	/^typedef struct	s_tab$/;"	s
 s_tabs	inc/bf_header.h	/^typedef struct  s_tabs$/;"	s
-seed_generator	src/bf_bruteforce.c	/^int		seed_generator(t_tabs *tab, int *seed, int head, int len)$/;"	f
-seed_try	src/bf_bruteforce.c	/^int		seed_try(t_tabs *tab, int *seed)$/;"	f
 size	inc/push_swap.h	/^	int		size;$/;"	m	struct:s_list
 sswap	src/push_swap/op_p_s.c	/^int		sswap(t_tab *tab)$/;"	f
 start	inc/push_swap.h	/^	t_elem	*start;$/;"	m	struct:s_list
 swap	src/push_swap/list_operations.c	/^int		swap(t_list *list)$/;"	f
-swap_a	src/bf_op.c	/^int		swap_a(t_tabs *tab)$/;"	f
+swap_a	bf_op.c	/^int		swap_a(t_tabs *tab)$/;"	f
 swap_a	src/push_swap/op_p_s.c	/^int		swap_a(t_tab *tab)$/;"	f
-swap_ab	src/bf_op.c	/^int		swap_ab(t_tabs *tab)$/;"	f
-swap_b	src/bf_op.c	/^int		swap_b(t_tabs *tab)$/;"	f
+swap_ab	bf_op.c	/^int		swap_ab(t_tabs *tab)$/;"	f
+swap_b	bf_op.c	/^int		swap_b(t_tabs *tab)$/;"	f
 swap_b	src/push_swap/op_p_s.c	/^int		swap_b(t_tab *tab)$/;"	f
 swap_p	src/push_swap/quicksort.c	/^static void swap_p(t_elem **a, t_elem **b)$/;"	f	file:
 t_elem	inc/push_swap.h	/^typedef	struct s_elem t_elem;$/;"	t	typeref:struct:s_elem
 t_list	inc/push_swap.h	/^}				t_list;$/;"	t	typeref:struct:s_list
 t_tab	inc/push_swap.h	/^}				t_tab;$/;"	t	typeref:struct:s_tab
 t_tabs	inc/bf_header.h	/^}               t_tabs;$/;"	t	typeref:struct:s_tabs
-usefull_cmb	src/bf_main.c	/^int     usefull_cmb(int *cmb, int head)$/;"	f
+usefull_cmb	src/bf/bf_main.c	/^int     usefull_cmb(int *cmb, int head)$/;"	f

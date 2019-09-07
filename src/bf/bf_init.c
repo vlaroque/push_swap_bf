@@ -1,13 +1,48 @@
 #include "bf_header.h"
+#include "push_swap.h"
 
 /*
  * a_lock don't care about the last position
  */
 
-int     init_bf(int *cmb, int len)
+void	read_seed(int *seed, t_tab *tab)
 {
 	int i;
-	t_tabs  tab;
+
+	i = 0;
+	while(seed[i] && i < SEEDLEN)
+	{
+		if (seed[i] == PA)
+			push_a(tab);
+		else if (seed[i] == PB)
+			push_a(tab);
+		else if (seed[i] == SA)
+			swap_a(tab);
+		else if (seed[i] == SB)
+			swap_b(tab);
+		else if (seed[i] == SS)
+			sswap(tab);
+		else if (seed[i] == RA)
+			rotate_a(tab);
+		else if (seed[i] == RB)
+			rotate_b(tab);
+		else if (seed[i] == RR)
+			rrotate(tab);
+		else if (seed[i] == RRA)
+			revrotate_a(tab);
+		else if (seed[i] == RRB)
+			revrotate_b(tab);
+		else if (seed[i] == RRR)
+			rrevrotate(tab);
+		i++;
+	}
+}
+
+int     init_bf(int *cmb, int len)
+{
+	int		i;
+	t_tabs	tab;
+	int		seed[SEEDLEN] = {0};
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
@@ -20,13 +55,14 @@ int     init_bf(int *cmb, int len)
 	tab.b_max = 1;
 	tab.a_lock = 1;
 	tab.a_head = 1;
-	rec_bruteforce(&tab);
+	rec_bruteforce(&tab, seed);
 }
 
-int     init_a_unlocked_bf(int *cmb, int len)
+int     init_a_unlocked_bf(int *cmb, int len, t_tab *tab)
 {
-	int i;
-	t_tabs  tab;
+	int		i;
+	t_tabs	tab;
+	int		seed[SEEDLEN] = {0};
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
@@ -39,13 +75,14 @@ int     init_a_unlocked_bf(int *cmb, int len)
 	tab.b_max = 1;
 	tab.a_lock = 0;
 	tab.a_head = 1;
-	rec_bruteforce(&tab);
+	rec_bruteforce(&tab, seed);
 }
 
-int     init_a_locked_bf(int *cmb, int len)
+int     init_a_locked_bf(int *cmb, int len, t_tab *tab)
 {
-	int i;
-	t_tabs  tab;
+	int		i;
+	t_tabs	tab;
+	int		seed[SEEDLEN] = {0};
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
@@ -58,13 +95,14 @@ int     init_a_locked_bf(int *cmb, int len)
 	tab.b_max = 1;
 	tab.a_lock = 1;
 	tab.a_head = 1;
-	rec_bruteforce(&tab);
+	rec_bruteforce(&tab, seed);
 }
 
-int     init_b_locked_bf(int *cmb, int len)
+int     init_b_locked_bf(int *cmb, int len, t_tab *tab)
 {
-	int i;
-	t_tabs  tab;
+	int		i;
+	t_tabs	tab;
+	int		seed[SEEDLEN] = {0};
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
@@ -77,5 +115,5 @@ int     init_b_locked_bf(int *cmb, int len)
 	tab.b_max = 1;
 	tab.a_lock = 1;
 	tab.a_head = 1;
-	rec_bruteforce(&tab);
+	rec_bruteforce(&tab, seed);
 }
