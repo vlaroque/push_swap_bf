@@ -6,7 +6,7 @@
 /*   By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 01:23:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/06/27 20:44:34 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/07 05:21:00 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		is_ordered(t_list *list)
 		elem = elem->next;
 		i++;
 	}
-	printf("is_ordered!\n");
+//	printf("is_ordered!\n");
 	return (1);
 }
 

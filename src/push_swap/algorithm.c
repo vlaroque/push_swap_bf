@@ -33,6 +33,7 @@ int		a_rev_rotation(t_tab *tab)
 {
 	t_elem *elem;
 
+//	write(1, "a_rev_rotation\n", 15);
 	while(tab->a->start->prev->data != PIVOT)
 		revrotate_a(tab);
 	return (0);
@@ -44,15 +45,16 @@ int		a_to_b(t_tab *tab)
 	int			pivot;
 	int			dist;
 
+//	write(1, "a to b\n\n", 7);
 	pivot = choose_pivot(tab->a);
 	dist = dist_pivot(tab->a, pivot, '-');
-/*	if (dist <= 3 && !(first))
+	if (dist <= 3 && !(first))
 	{
 //		print_tabs(tab);
 		a_swaper(tab);
 //		print_tabs(tab);
 		return (1);
-	}*/
+	}
 	while (dist >= 0)
 	{
 		if (tab->a->start->index <= pivot)
@@ -65,8 +67,13 @@ int		a_to_b(t_tab *tab)
 			rotate_a(tab);
 		dist--;
 	}
+
 	if (!(first))
 		a_rev_rotation(tab);
+
+	revrotate_b(tab);
+	push_a(tab);
+	is_pivot(tab->a->start);
 	first = 0;
 	return (1);
 }
@@ -76,6 +83,7 @@ int		b_to_a(t_tab *tab)
 	int		pivot;
 	int		dist;
 	
+//	write(1, "b to a\n\n", 7);
 	pivot = choose_pivot(tab->b);
 	dist = best_dist(dist_pivot(tab->b, pivot, '+'), 999999);
 	while (dist >= 0)
@@ -96,13 +104,15 @@ int		b_to_a(t_tab *tab)
 		//	dist++;
 	}
 	revrotate_a(tab);
+	is_pivot(tab->a->start);
 	return (1);
 }
 
 int		a_rotation(t_tab *tab)
 {
 	t_elem *elem;
-
+	
+//	write(1, "a_rotation\n", 11);
 	while(tab->a->start->data == PIVOT)
 	{
 		rotate_a(tab);
@@ -116,19 +126,17 @@ int		a_rotation(t_tab *tab)
 
 int		algo(t_tab *tab)
 {
-	while (1)
+	int i = 0;
+	while (10)
 	{
 		a_to_b(tab);
-		//print_tabs(tab);
+//		print_tabs(tab);
 		while (tab->b->size > 0)
 		{
 			if (tab->b->size < 11)
 				b_to_a_insort(tab);
 			else
-			{
 				b_to_a(tab);
-				is_pivot(tab->a->start);
-			}
 		//	print_tabs(tab);
 		}
 		if (is_ordered(tab->a))
