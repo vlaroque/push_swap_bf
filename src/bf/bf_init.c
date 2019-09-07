@@ -1,5 +1,5 @@
-#include "bf_header.h"
 #include "push_swap.h"
+#include "bf_header.h"
 
 /*
  * a_lock don't care about the last position
@@ -58,7 +58,7 @@ int     init_bf(int *cmb, int len)
 	rec_bruteforce(&tab, seed);
 }
 
-int     init_a_unlocked_bf(int *cmb, int len, t_tab *tab)
+int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
@@ -78,7 +78,7 @@ int     init_a_unlocked_bf(int *cmb, int len, t_tab *tab)
 	rec_bruteforce(&tab, seed);
 }
 
-int     init_a_locked_bf(int *cmb, int len, t_tab *tab)
+int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
@@ -98,7 +98,7 @@ int     init_a_locked_bf(int *cmb, int len, t_tab *tab)
 	rec_bruteforce(&tab, seed);
 }
 
-int     init_b_locked_bf(int *cmb, int len, t_tab *tab)
+int     init_b_locked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
