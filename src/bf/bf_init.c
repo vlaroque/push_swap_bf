@@ -15,7 +15,7 @@ void	read_seed(int *seed, t_tab *tab)
 		if (seed[i] == PA)
 			push_a(tab);
 		else if (seed[i] == PB)
-			push_a(tab);
+			push_b(tab);
 		else if (seed[i] == SA)
 			swap_a(tab);
 		else if (seed[i] == SB)
@@ -95,7 +95,10 @@ int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
 	tab.b_max = 1;
 	tab.a_lock = 1;
 	tab.a_head = 1;
+	//printf("nbr send %d | %d | %d | %d| %d  len = %d\n", cmb[0], cmb[1], cmb[2], cmb[3], cmb[4], len);
 	rec_bruteforce(&tab, seed);
+	read_seed(seed, piles);
+	return (1);
 }
 
 int     init_b_locked_bf(int *cmb, int len, t_tab *piles)

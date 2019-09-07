@@ -29,6 +29,8 @@ static int	head_operations(t_tab *tab)
 
 int		a_swaper(t_tab *tab)
 {
+//	write(1, "swap in\n", 8);
+//	print_tabs(tab);
 	if (head_operations(tab))
 		return (1);
 	while(1)

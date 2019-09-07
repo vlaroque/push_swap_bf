@@ -67,6 +67,7 @@ int		choose_pivot(t_list *list);
 /* algo_distances */
 int		dist_neg_pivot(t_list *list, int pivot); /* a refaire */
 int		dist_pivot(t_list *list, int pivot, char p_m);
+int		rev_dist_pivot(t_list *list, int pivot, char p_m);
 int		best_dist(int pos, int neg);
 
 /* algo_insort */

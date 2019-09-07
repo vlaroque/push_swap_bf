@@ -6,7 +6,7 @@
 #    By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/06/29 13:05:48 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/07 18:44:47 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,12 +53,12 @@ lol:
 
 $(NAME1) : $(OBJ)
 	echo "lol\n"
-	$(CC) $(OBJ) -o $@ $(CFLAGS)
+	$(CC) $(OBJ) -g -o louregni2/$@ $(CFLAGS)
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	echo 'compiling $@'
-	$(CC) $(CFL_PATH) -I $(INC_PATH) -MMD -c $< -o $@
+	$(CC) $(CFL_PATH) -g -I $(INC_PATH) -MMD -c $< -o $@
 
 clean :
 	echo 'cleaning'
