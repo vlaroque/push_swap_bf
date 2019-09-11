@@ -63,8 +63,8 @@ int		rec_try(t_tabs tab, int *seed, int head, int len)
 	{
 		if(bf_is_sorted(&tab))
 		{
-//			printf("seed = ");
-//			bf_printseed(seed);
+			printf("seed = ");
+			bf_printseed(seed);
 			return (1);
 		}
 		return (0);

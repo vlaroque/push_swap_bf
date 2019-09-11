@@ -86,7 +86,36 @@ int		dist_to_next_pivot(t_list *list, int *min)
 	return (dist);
 }
 
+int		a_to_b_bf(t_tab *tab)
+{
+	int		dist;
+	int		i;
+	int		combi;
+	int		min;
+	t_elem	*tmp;
 
+	a_rev_rotation(tab);
+	dist = dist_to_next_pivot(tab->a, &min);
+	if (dist > 5)
+		return (0);
+//	printf("bf inited\n");
+	i = 0;
+	tmp = tab->a->start;
+	combi = 0;
+	while (i < dist)
+	{
+		tmp->data = PIVOT;
+		combi = ((tmp->index - min + 1) + combi * 10);
+		tmp = tmp->next;
+		i++;
+	}
+//	printf("combi = %d", combi);
+	instant_bf(combi, tab);
+	return (1);
+}
+
+
+/*
 int		a_to_b_bf(t_tab *tab)
 {
 	int		dist;
@@ -114,7 +143,7 @@ int		a_to_b_bf(t_tab *tab)
 	init_a_locked_bf(nbr, dist, tab);
 	return (1);
 }
-
+*/
 
 int		a_to_b(t_tab *tab)
 {
@@ -235,17 +264,18 @@ int		a_rotation(t_tab *tab)
 int		algo(t_tab *tab)
 {
 	int i = 0;
+
+//	print_tabs(tab);
 	while (10)
 	{
-		a_to_b(tab);
 //		print_tabs(tab);
+		a_to_b(tab);
 		while (tab->b->size > 0)
 		{
 			if (tab->b->size < 22)
 				b_to_a_insort(tab);
 			else
 				b_to_a(tab);
-//			print_tabs(tab);
 		}
 		if (is_ordered(tab->a))
 			return (1);

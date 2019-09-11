@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/07 05:35:30 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/11 13:07:41 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int		main(int ac, char **av)
 //	print_tabs(ptr);
 	algo(ptr);
 //	print_tabs(ptr);
+	op_list_read(&(ptr->ops));
+	free_op_list(&(ptr->ops));
 	return (0);
 }

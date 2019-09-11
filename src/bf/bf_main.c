@@ -1,5 +1,25 @@
 #include "bf_header.h"
 
+int     init_bf(int *cmb, int len)
+{
+	int		i;
+	t_tabs	tab;
+	int		seed[SEEDLEN] = {0};
+
+	bzero(&tab, sizeof(t_tabs));
+	i = 0;
+	while(i < len)
+	{
+		tab.a[cmb[i] - 1] = 1 << i;
+		i++;
+	}
+	tab.a_max = 1 << len;
+	tab.b_max = 1;
+	tab.a_lock = 1;
+	tab.a_head = 1;
+	rec_bruteforce(&tab, seed);
+}
+
 int     usefull_cmb(int *cmb, int head)
 {
 	int check;
@@ -23,7 +43,7 @@ int     next_cmb(int *cmb, int head, int len)
 	if (head == len)
 	{
 		printf("combi %d %d %d %d %d\n", cmb[0], cmb[1], cmb[2], cmb[3], cmb[4]);
-		init_bf(cmb, 5);
+		init_bf(cmb, len);
 	}
 	else
 	{

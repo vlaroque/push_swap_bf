@@ -1,10 +1,13 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "binop.h"
 # include <stdio.h>
 # define PIVOT 1
 
 typedef	struct s_elem t_elem;
+typedef	struct s_op t_op;
+
 struct	s_elem
 {
 	int		nbr;
@@ -22,8 +25,9 @@ typedef struct	s_list
 
 typedef struct	s_tab
 {
-	t_list *a;
-	t_list *b;
+	t_list	*a;
+	t_list	*b;
+	t_op	*ops;
 }				t_tab;
 
 /* init */
@@ -71,8 +75,23 @@ int		rev_dist_pivot(t_list *list, int pivot, char p_m);
 int		best_dist(int pos, int neg);
 
 /* algo_insort */
-int			b_to_a_insort(t_tab *tab);
+int		b_to_a_insort(t_tab *tab);
 
 /* algo_swaper */
 int		a_swaper(t_tab *tab);
-#endif	
+
+/* chain*/
+struct s_op
+{
+	int		op;
+	t_op	*next;
+};
+
+void	op_add_new(t_op **begin, int op);
+void	op_list_read(t_op **begin);
+void	free_op_list(t_op **begin);
+
+/* ft_instant */
+int		instant_bf(int comb, t_tab *tab);
+
+#endif

@@ -38,25 +38,7 @@ void	read_seed(int *seed, t_tab *tab)
 	}
 }
 
-int     init_bf(int *cmb, int len)
-{
-	int		i;
-	t_tabs	tab;
-	int		seed[SEEDLEN] = {0};
 
-	bzero(&tab, sizeof(t_tabs));
-	i = 0;
-	while(i < len)
-	{
-		tab.a[cmb[i] - 1] = 1 << i;
-		i++;
-	}
-	tab.a_max = 1 << len;
-	tab.b_max = 1;
-	tab.a_lock = 1;
-	tab.a_head = 1;
-	rec_bruteforce(&tab, seed);
-}
 
 int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 {

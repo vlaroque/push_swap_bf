@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <strings.h>
 #include "push_swap.h"
+#include "binop.h"
 # define CMBLENMAX 6
 # define SEEDLEN 20
 # define TABLEN 5
@@ -43,17 +44,5 @@ int		bf_printtab(t_tabs *tab);
 int		bf_printseed(int *seed);
 int		bf_is_sorted(t_tabs *tab);
 
-# define PB 1
-# define PA 2
-# define RA 4
-# define RB 8
-# define RR 16
-# define RRA 32
-# define RRB 64
-# define RRR 128
-# define SA 256
-# define SB 512
-# define SS 1024
-# define END 2048
 
 #endif

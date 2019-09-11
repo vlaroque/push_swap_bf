@@ -9,6 +9,8 @@ int		bf_is_sorted(t_tabs *tab)
 	revro = tab->a_head;
 	if (tab->a_lock)
 	{
+		if (!(tab->a_head & (tab->a_max >> 1)))
+			return (0);
 		while (revro > 1)
 		{
 			bf_revrotate_a(tab);
