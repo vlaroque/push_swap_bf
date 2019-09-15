@@ -6,17 +6,65 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/11 13:07:41 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/15 20:10:15 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
-/*
-int		push_swap()
+static int		are_useless_ops(int i)
 {
-}*/
+	if (i == (RA | RRA) || i == (RB | RRB) || i == (PA | PB) || i == (RR | RRR))
+		return (-1);
+	if (i == SA || i == SB || i == SS)
+		return (-1);
+	if (i == (RA | RB))
+		return (RR);
+	if (i == (RRA | RRB))
+		return (RRR);
+	if (i == (SA | SB))
+		return (SS);
+	return (0);
+}
 
+
+int		op_list_opti(t_op **begin)
+{
+	t_op	*head;
+	t_op	**prev;
+	t_op	*save;
+	int		res;
+
+	res = 0;
+	if (begin == NULL)
+		return (0);
+	head = *begin;
+	prev = begin;
+	if (head->next == NULL || head->next->next == NULL)
+		return (0);
+	while (head->next != NULL)
+	{
+		if (are_useless_ops(head->op | head->next->op) == -1)
+		{
+			*prev = head->next->next;
+			free(head->next);
+			free(head);
+			head = *prev;
+			res = 1;
+		}
+		else if (are_useless_ops(head->op | head->next->op) != 0)
+		{
+			head->op = are_useless_ops(head->op | head->next->op);
+			save = head->next->next;
+			free(head->next);
+			head->next = save;
+		}
+		prev = &(head->next);
+		head = head->next;
+	}
+	return (res);
+}
 
 int		main(int ac, char **av)
 {
@@ -30,6 +78,8 @@ int		main(int ac, char **av)
 //	print_tabs(ptr);
 	algo(ptr);
 //	print_tabs(ptr);
+	while (op_list_opti(&(ptr->ops)))
+		;
 	op_list_read(&(ptr->ops));
 	free_op_list(&(ptr->ops));
 	return (0);

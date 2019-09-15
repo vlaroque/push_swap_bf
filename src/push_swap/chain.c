@@ -41,12 +41,12 @@ void	free_op_list(t_op **begin)
 	if (begin == NULL)
 		return ;
 	head = *begin;
-		while (head != NULL)
-		{
-			next = head->next;
-			free(head);
-			head = next;
-		}
+	while (head != NULL)
+	{
+		next = head->next;
+		free(head);
+		head = next;
+	}
 	*begin = NULL;
 }
 

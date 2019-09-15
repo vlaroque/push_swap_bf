@@ -109,24 +109,6 @@ static void	read_solution(char *solution, t_tab *tab, int i)
 	}
 }
 
-/*
-int		instant_bf(int comb, t_tab tab)
-{
-	int		index;
-	char	*str;
-
-	if (comb > 5000)
-	{
-		index = combination_five(54321);
-		str = solution_five(index);
-	}
-	else
-		str = little_solution(comb);
-	printf("%s\n", str);
-	return (0);
-}
-*/
-
 int		instant_bf(int comb, t_tab *tab)
 {
 	int		index;
