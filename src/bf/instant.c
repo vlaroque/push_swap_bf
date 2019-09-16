@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instant.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/15 22:20:15 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/15 22:54:54 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "instant.h"
 
-static char	*little_solution(int comb)
+static char		*little_solution(int comb)
 {
 	int			i;
 	static		t_solution solutions[33] = {
@@ -28,7 +40,6 @@ static char	*little_solution(int comb)
 
 static int		combination_five(int comb)
 {
-//	printf("combi_five comb = %d\n", comb);
 	static int	comb_tab[120] = {
 		12345, 12354, 12435, 12453, 12534, 12543, 13245, 13254,
 		13425, 13452, 13524, 13542, 14235, 14253, 14325, 14352, 14523, 14532,
@@ -51,36 +62,36 @@ static int		combination_five(int comb)
 	return (i);
 }
 
-static char	*solution_five(int index)
+static char		*solution_five(int index)
 {
-	static char sol[120][15] = {
-		"aaaa", "aaasa", "aasaa", "aaqsapa", "aaqaap", "aaqsaap",
-		"asaaa", "asaasa", "aqsapaa", "aqqsappaa", "aqsapasa", "aqquapaap",
-		"aqaapa", "aqasapa", "aqsaapa", "aqqsapapa", "aqqaappa", "aqqsaappa",
-		"aqaaap", "aqasaap", "aqsaaap", "aqqsapaap", "aqqaapap", "aqqsaapap",
-		"saaaa", "saaasa", "saasaa", "saaqsapa", "saaqaap", "saaqsaap",
-		"qsapaaa", "qsapaasa", "qqsappaaa", "qqqsapppaaa", "qqsappaasa",
-		"qqqsapppaasa", "qsapasaa", "qqaupaapa", "qquapaapa", "qqquapppaaa",
-		"qqsaupaapa", "qqqsapupaapa", "sqsaaaap", "qqaupaaap", "qquapaaap",
-		"qqqspuapaaap", "qqsaupaaap", "qqqsapupaaap", "qaapaa", "qaapasa",
-		"qasapaa", "qaqsappaa", "qasapasa", "qaquapaap", "qsaapaa", "qsaapasa",
-		"qqsapapaa", "qqqsappapaa", "qqsapapasa", "qqqsappapasa", "qqaappaa",
-		"qqasappaa", "qqsaappaa", "qqqsapappaa", "qqqaapppaa", "qqqsaapppaa",
-		"qqaappasa", "qqauapaap", "qquaapaap", "qqqspuaapaap", "qqsauapaap",
-		"qqquaapppaa", "qaaapa", "qaasapa", "qasaapa", "qaqsapapa", "qaqaappa",
-		"qaqsaappa", "qsaaapa", "qsaasapa", "qqsapaapa", "qqqsappaapa",
-		"qqsapasapa", "qqquapaappa", "qqaapapa", "qqasapapa", "qqsaapapa",
-		"qqqsapapapa", "qqqaappapa", "qqqsaappapa", "qqaaappa", "qqasaappa",
-		"qqsaaappa", "qqqsapaappa", "qqqaapappa", "qqqsaapappa", "qaaaap",
-		"qaasaap", "qasaaap", "qaqsapaap", "qaqaapap", "qaqsaapap", "qsaaaap",
-		"qsaasaap", "qqsapaaap", "qqqsappaaap", "qqsapasaap", "qqquapaapap",
-		"qqaapaap", "qqasapaap", "qqsaapaap", "qqqsapapaap", "qqqaappaap",
-		"qqqsaappaap", "qqaaapap", "qqasaapap", "qqsaaapap", "qqqsapaapap",
-		"qqqaapapap", "qqqsaapapap"};
+	static char sol[120][15] = { "aaaa", "aaasa", "aasaa", "aaqsapa", "aaqaap",
+		"aaqsaap", "asaaa", "asaasa", "aqsapaa", "aqqsappaa", "aqsapasa",
+		"aqquapaap", "aqaapa", "aqasapa", "aqsaapa", "aqqsapapa", "aqqaappa",
+		"aqqsaappa", "aqaaap", "aqasaap", "aqsaaap", "aqqsapaap", "aqqaapap",
+		"aqqsaapap", "saaaa", "saaasa", "saasaa", "saaqsapa", "saaqaap",
+		"saaqsaap", "qsapaaa", "qsapaasa", "qqsappaaa", "qqqsapppaaa",
+		"qqsappaasa", "qqqsapppaasa", "qsapasaa", "qqaupaapa", "qquapaapa",
+		"qqquapppaaa", "qqsaupaapa", "qqqsapupaapa", "sqsaaaap", "qqaupaaap",
+		"qquapaaap", "qqqspuapaaap", "qqsaupaaap", "qqqsapupaaap", "qaapaa",
+		"qaapasa", "qasapaa", "qaqsappaa", "qasapasa", "qaquapaap", "qsaapaa",
+		"qsaapasa", "qqsapapaa", "qqqsappapaa", "qqsapapasa", "qqqsappapasa",
+		"qqaappaa", "qqasappaa", "qqsaappaa", "qqqsapappaa", "qqqaapppaa",
+		"qqqsaapppaa", "qqaappasa", "qqauapaap", "qquaapaap", "qqqspuaapaap",
+		"qqsauapaap", "qqquaapppaa", "qaaapa", "qaasapa", "qasaapa",
+		"qaqsapapa", "qaqaappa", "qaqsaappa", "qsaaapa", "qsaasapa",
+		"qqsapaapa", "qqqsappaapa", "qqsapasapa", "qqquapaappa", "qqaapapa",
+		"qqasapapa", "qqsaapapa", "qqqsapapapa", "qqqaappapa", "qqqsaappapa",
+		"qqaaappa", "qqasaappa", "qqsaaappa", "qqqsapaappa", "qqqaapappa",
+		"qqqsaapappa", "qaaaap", "qaasaap", "qasaaap", "qaqsapaap", "qaqaapap",
+		"qaqsaapap", "qsaaaap", "qsaasaap", "qqsapaaap", "qqqsappaaap",
+		"qqsapasaap", "qqquapaapap", "qqaapaap", "qqasapaap", "qqsaapaap",
+		"qqqsapapaap", "qqqaappaap", "qqqsaappaap", "qqaaapap", "qqasaapap",
+		"qqsaaapap", "qqqsapaapap", "qqqaapapap", "qqqsaapapap"};
+
 	return (sol[index]);
 }
 
-static void	read_solution(char *solution, t_tab *tab, int i)
+static void		read_solution(char *solution, t_tab *tab, int i)
 {
 	while (solution[++i] != 0)
 	{
@@ -109,21 +120,18 @@ static void	read_solution(char *solution, t_tab *tab, int i)
 	}
 }
 
-int		instant_bf(int comb, t_tab *tab)
+int				instant_bf(int comb, t_tab *tab)
 {
 	int		index;
 	char	*str;
 
 	if (comb > 5000)
 	{
-//		printf("\nmore than 5\n");
 		index = combination_five(comb);
-//		printf("index = %d\n", index);
 		str = solution_five(index);
 	}
 	else
 		str = little_solution(comb);
 	read_solution(str, tab, -1);
-//	printf("%s\n", str);
 	return (0);
 }

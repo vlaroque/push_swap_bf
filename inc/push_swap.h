@@ -31,7 +31,7 @@ typedef struct	s_tab
 }				t_tab;
 
 /* init */
-t_list	*init(int ac, char **av);
+t_list	*init_list_a(int ac, char **av);
 void	printlist(t_list *list);
 void	free_list(t_list *list);
 int		post_op(t_list *list);
