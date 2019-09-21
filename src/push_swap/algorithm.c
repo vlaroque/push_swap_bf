@@ -195,22 +195,10 @@ int		b_to_a(t_tab *tab)
 	int		pivot;
 	int		dist;
 	
-//	printf("b to a\n");
-//	printf("   >1\n");
-//	print_tabs(tab);
 	pivot = choose_pivot(tab->b);
 	dist = best_dist(dist_pivot(tab->b, pivot, '+'), 10 * rev_dist_pivot(tab->b, pivot, '+'));
-//	printf("   >2\n");
-//	printf("pivot = %d dist = %d\n", pivot, dist);
-//	print_tabs(tab);
 	while (!(dist == 0))
 	{
-		//if (microopti(tab))
-		//{
-		//	pivot = choose_pivot(tab->b);
-	//		dist = best_dist(dist_pivot(tab->b, pivot, '+'), rev_dist_pivot(tab->b, pivot, '+'));
-	//	}
-		//else
 			if(tab->b->start->index >= pivot)
 		{
 			push_a(tab);
@@ -232,12 +220,8 @@ int		b_to_a(t_tab *tab)
 			dist++;
 		}
 	}
-//	printf("   >3\n");
-//	print_tabs(tab);
 	revrotate_a(tab);
 	is_pivot(tab->a->start);
-//	printf("   >4\n");
-//	print_tabs(tab);
 	return (1);
 }
 
@@ -253,7 +237,7 @@ int		a_rotation(t_tab *tab)
 		rotate_a(tab);
 		if (tab->a->start->data != PIVOT)
 			pivot_maker(tab);
-		if(tab->a->start->index == 0 && is_ordered(tab->a))
+		if(tab->a->start->index == 0 && is_ordered(tab->a) && tab->b->size == 0)
 			return (1);
 		if (++i > 500)
 			exit (0);
@@ -277,7 +261,7 @@ int		algo(t_tab *tab)
 			else
 				b_to_a(tab);
 		}
-		if (is_ordered(tab->a))
+		if (is_ordered(tab->a) && tab->b->size == 0)
 			return (1);
 		if (a_rotation(tab))
 			return (1);

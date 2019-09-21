@@ -33,14 +33,15 @@ typedef struct	s_tab
 /* init */
 t_list	*init_list_a(int ac, char **av);
 void	printlist(t_list *list);
-void	free_list(t_list *list);
-int		post_op(t_list *list);
 void	quick_sort(t_elem **tab, int first, int last);
-int		is_ordered(t_list *list);
 
 /* list commons */
-t_list		*init_empty_list(void);
-void		print_tabs(t_tab *tab);
+t_list	*init_empty_list(void);
+void	print_tabs(t_tab *tab);
+int		post_op(t_list *list);
+int		is_ordered(t_list *list);
+void	free_list(t_list *list);
+void	free_both_lists(t_tab *tab);
 
 /* list operations */
 int		rotate(t_list *list);
