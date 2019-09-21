@@ -6,12 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/16 00:39:42 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/21 22:59:16 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 static int		are_useless_ops(int i)
 {
@@ -80,5 +81,6 @@ int		main(int ac, char **av)
 		;
 	op_list_read(&(ptr->ops));
 	free_op_list(&(ptr->ops));
+	free_both_lists(ptr);
 	return (0);
 }

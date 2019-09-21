@@ -33,23 +33,6 @@ void	op_add(t_op **begin, t_op *new_op)
 	new_op->next = NULL;
 }
 
-void	free_op_list(t_op **begin)
-{
-	t_op	*next;
-	t_op	*head;
-
-	if (begin == NULL)
-		return ;
-	head = *begin;
-	while (head != NULL)
-	{
-		next = head->next;
-		free(head);
-		head = next;
-	}
-	*begin = NULL;
-}
-
 void	op_add_new(t_op **begin, int op)
 {
 	t_op *tmp;

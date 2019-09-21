@@ -6,7 +6,7 @@
 #    By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/16 08:46:17 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/21 20:12:28 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ SRC_PUSH = push_swap.c algorithm.c algo_distances.c algo_pivot.c algo_swaper.c \
 SRC_BF = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c \
 		 bf_recursive_bruteforce.c instant.c
 
-SRC_COMMON = init_list_a.c list_commons.c init_check.c quicksort.c \
+SRC_COMMON = init_list_a.c list_commons.c quicksort.c init_check.c\
 			 init_errors.c op_p_s.c op_r_rr.c op_rrr.c  list_operations.c \
-			 chain.c
+			 chain.c free_struct.c
 
 SRC_CHECK = checker.c
 

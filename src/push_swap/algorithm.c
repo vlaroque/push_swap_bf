@@ -11,7 +11,6 @@
 
 int		microopti(t_tab *tab)
 {
-//	printf("micropti\n");
 	if (tab->a->start->prev->data == PIVOT)
 	{
 		if (tab->a->start->prev->index == tab->b->start->index + 1)
@@ -37,7 +36,6 @@ int		pivot_maker(t_tab *tab)
 {
 	t_elem *head;
 
-//	printf("pivot maker\n");
 	head = tab->a->start;
 	while (head->data != PIVOT)
 	{
@@ -60,7 +58,6 @@ int		a_rev_rotation(t_tab *tab)
 {
 	t_elem *elem;
 
-//	printf("a_rev_rotation\n");
 	while(tab->a->start->prev->data != PIVOT)
 		revrotate_a(tab);
 	return (0);
@@ -98,7 +95,6 @@ int		a_to_b_bf(t_tab *tab)
 	dist = dist_to_next_pivot(tab->a, &min);
 	if (dist > 5)
 		return (0);
-//	printf("bf inited\n");
 	i = 0;
 	tmp = tab->a->start;
 	combi = 0;
@@ -109,7 +105,6 @@ int		a_to_b_bf(t_tab *tab)
 		tmp = tmp->next;
 		i++;
 	}
-//	printf("combi = %d", combi);
 	instant_bf(combi, tab);
 	return (1);
 }
@@ -151,20 +146,10 @@ int		a_to_b(t_tab *tab)
 	int			pivot;
 	int			dist;
 
-//	printf("a to b\n");
-//	print_tabs(tab);
 	pivot = choose_pivot(tab->a);
 	dist = dist_pivot(tab->a, pivot, '-');
 	if (!(first) && a_to_b_bf(tab))
 		return (1);
-	/*if (!(first) && dist_to_next_pivot(tab->a, NULL) <= 4)
-	{
-//		printf("swaper1\n");
-		a_swaper(tab);
-//		printf("swaper2\n");
-		return (1);
-	}*/
-//	print_tabs(tab);
 	while (dist >= 0)
 	{
 		if (tab->a->start->index <= pivot)
@@ -177,15 +162,12 @@ int		a_to_b(t_tab *tab)
 			rotate_a(tab);
 		dist--;
 	}
-
 	if (!(first))
 		a_rev_rotation(tab);
-
 	revrotate_b(tab);
 	push_a(tab);
 	is_pivot(tab->a->start);
 	first = 0;
-//	print_tabs(tab);
 	return (1);
 }
 
@@ -231,7 +213,6 @@ int		a_rotation(t_tab *tab)
 	int i;
 	
 	i = 0;
-//	printf("a_rotation\n");
 	while(tab->a->start->data == PIVOT)
 	{
 		rotate_a(tab);
@@ -249,10 +230,8 @@ int		algo(t_tab *tab)
 {
 	int i = 0;
 
-//	print_tabs(tab);
 	while (10)
 	{
-//		print_tabs(tab);
 		a_to_b(tab);
 		while (tab->b->size > 0)
 		{
@@ -266,5 +245,4 @@ int		algo(t_tab *tab)
 		if (a_rotation(tab))
 			return (1);
 	}
-//	print_tabs(tab);
 }

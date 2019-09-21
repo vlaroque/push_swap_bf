@@ -6,7 +6,7 @@
 /*   By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 00:52:53 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/06/21 09:32:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/21 19:52:03 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,4 @@ void	printlist(t_list *list)
 	}
 }
 
-void	free_list(t_list *list)
-{
-	int		i;
-	t_elem	*elem;
-	t_elem	*next;
 
-	i = 0;
-	elem = list->start;
-	while (i < list->size)
-	{
-		next = elem->next;
-		free(elem);
-		elem = next;
-		i++;
-	}
-	free(list);
-}
-
-void	free_both_lists(t_tab *tab)
-{
-	free_list(tab->a);
-	free_list(tab->b);
-}
