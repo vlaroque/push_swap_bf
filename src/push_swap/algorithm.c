@@ -9,29 +9,6 @@
  * commence sur une case non pivot, jusqu'au prochain
  */
 
-int		microopti(t_tab *tab)
-{
-	if (tab->a->start->prev->data == PIVOT)
-	{
-		if (tab->a->start->prev->index == tab->b->start->index + 1)
-		{
-			push_a(tab);
-			is_pivot(tab->a->start);
-			rotate_a(tab);
-			return (1);
-		}
-		if (tab->a->start->prev->index == tab->b->start->prev->index + 1)
-		{
-			revrotate_b(tab);
-			push_a(tab);
-			is_pivot(tab->a->start);
-			rotate_a(tab);
-			return (1);
-		}
-	}
-	return (0);
-}
-
 int		pivot_maker(t_tab *tab)
 {
 	t_elem *head;
@@ -109,37 +86,6 @@ int		a_to_b_bf(t_tab *tab)
 	return (1);
 }
 
-
-/*
-int		a_to_b_bf(t_tab *tab)
-{
-	int		dist;
-	int		i;
-	int		nbr[5];
-	int		min;
-	t_elem	*tmp;
-
-//	print_tabs(tab);
-	a_rev_rotation(tab);
-	dist = dist_to_next_pivot(tab->a, &min);
-	if (dist > 5)
-		return (0);
-	i = 0;
-	tmp = tab->a->start;
-	while (i < dist)
-	{
-		tmp->data = PIVOT;
-		nbr[i] = tmp->index - min + 1;
-		tmp = tmp->next;
-		i++;
-	}
-//	printf("min = %d, dist = %d/n", min, dist);
-//	print_tabs(tab);
-	init_a_locked_bf(nbr, dist, tab);
-	return (1);
-}
-*/
-
 int		a_to_b(t_tab *tab)
 {
 	static int	first = 1;
@@ -176,31 +122,20 @@ int		b_to_a(t_tab *tab)
 {
 	int		pivot;
 	int		dist;
-	
+
 	pivot = choose_pivot(tab->b);
-	dist = best_dist(dist_pivot(tab->b, pivot, '+'), 10 * rev_dist_pivot(tab->b, pivot, '+'));
-	while (!(dist == 0))
+	dist = dist_pivot(tab->b, pivot, '+') + 1;
+	while (dist > 0)
 	{
-			if(tab->b->start->index >= pivot)
+		if(tab->b->start->index >= pivot)
 		{
 			push_a(tab);
 			if(tab->a->start->index == pivot)
 				rotate_a(tab);
-			if (dist > 0)
-				dist--;
-			else
-				dist = dist; /* attention laisser ! */
 		}
-		else if (dist > 0)
-		{
+		else
 			rotate_b(tab);
-			dist--;
-		}
-		else if (dist < 0)
-		{
-			revrotate_b(tab);
-			dist++;
-		}
+		dist--;
 	}
 	revrotate_a(tab);
 	is_pivot(tab->a->start);
@@ -211,7 +146,7 @@ int		a_rotation(t_tab *tab)
 {
 	t_elem *elem;
 	int i;
-	
+
 	i = 0;
 	while(tab->a->start->data == PIVOT)
 	{
@@ -226,10 +161,32 @@ int		a_rotation(t_tab *tab)
 	return (0);
 }
 
+int		bruteforce_for_five(t_tab *tab)
+{
+	int		i;
+	t_elem	*head;
+	int		a[5];
+
+	if (tab->a->size > 5)
+		return (0);
+	i = 0;
+	head = tab->a->start;
+	while (i < tab->a->size)
+	{
+		a[i] = head->index + 1;
+		head = head->next;
+		i++;
+	}
+	init_a_unlocked_bf(a, tab->a->size, tab);
+	return (1);
+}
+
 int		algo(t_tab *tab)
 {
 	int i = 0;
 
+	if(bruteforce_for_five(tab))
+		return (1);
 	while (10)
 	{
 		a_to_b(tab);

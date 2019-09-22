@@ -83,7 +83,7 @@ t_list	*init_list_a(int ac, char **av)
 
 	i = 1;
 	if (!(list = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
+		exit(1);
 	list->size = 0;
 	while (i < ac)
 	{

@@ -58,6 +58,8 @@ int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 	tab.a_lock = 0;
 	tab.a_head = 1;
 	rec_bruteforce(&tab, seed);
+	read_seed(seed, piles);
+	return (1);
 }
 
 int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
@@ -77,7 +79,6 @@ int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
 	tab.b_max = 1;
 	tab.a_lock = 1;
 	tab.a_head = 1;
-	//printf("nbr send %d | %d | %d | %d| %d  len = %d\n", cmb[0], cmb[1], cmb[2], cmb[3], cmb[4], len);
 	rec_bruteforce(&tab, seed);
 	read_seed(seed, piles);
 	return (1);
@@ -101,4 +102,5 @@ int     init_b_locked_bf(int *cmb, int len, t_tab *piles)
 	tab.a_lock = 1;
 	tab.a_head = 1;
 	rec_bruteforce(&tab, seed);
+	return (1);
 }

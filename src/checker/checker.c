@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/15 22:54:10 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:12:12 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int		exec_read_four(char *buff, t_tab *tab)
 		return (-1);
 	return (0);
 }
-
 
 static int		exec_read_three(char *buff, t_tab *tab)
 {
@@ -54,7 +53,7 @@ static int		exec_read_three(char *buff, t_tab *tab)
 	return (0);
 }
 
-int		reader(t_tab *tab)
+int				reader(t_tab *tab)
 {
 	char		buff[4];
 	ssize_t		ret;
@@ -74,19 +73,19 @@ int		reader(t_tab *tab)
 			ret = read(0, buff + 3, 1);
 			if (ret != 1 && buff[3] != '\n')
 				return (-1);
-			if((exec_read_four(buff, tab)))
+			if ((exec_read_four(buff, tab)))
 				return (-1);
 		}
 	}
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
-	t_tab	tab;
-	t_tab	*ptr;
+	t_tab		tab;
+	t_tab		*ptr;
 
 	if (!(tab.a = init_list_a(ac, av)))
-		return (0); /* ajouter l'erreur */
+		return (error(1));
 	tab.b = init_empty_list();
 	ptr = &tab;
 	if (reader(ptr))
@@ -95,5 +94,7 @@ int		main(int ac, char **av)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	free_op_list(&(ptr->ops));
+	free_both_lists(ptr);
 	return (0);
 }

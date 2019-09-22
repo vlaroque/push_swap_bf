@@ -34,6 +34,7 @@ typedef struct	s_tab
 t_list	*init_list_a(int ac, char **av);
 void	printlist(t_list *list);
 void	quick_sort(t_elem **tab, int first, int last);
+int		error(int i);
 
 /* list commons */
 t_list	*init_empty_list(void);

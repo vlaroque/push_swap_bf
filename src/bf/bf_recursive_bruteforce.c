@@ -62,11 +62,7 @@ int		rec_try(t_tabs tab, int *seed, int head, int len)
 	if (head == len)
 	{
 		if(bf_is_sorted(&tab))
-		{
-			printf("seed = ");
-			bf_printseed(seed);
 			return (1);
-		}
 		return (0);
 	}
 	else
@@ -76,13 +72,9 @@ int		rec_try(t_tabs tab, int *seed, int head, int len)
 			seed[head] = op;
 			temp = tab;
 			if (head == 0 || (head > 0 && op_usefull(seed[head - 1] | op)))
-			{
 				if (make_op(&temp, op))
-				{
 					if (rec_try(temp, seed, head + 1, len))
 						return (1);
-				}
-			}
 			op <<= 1;
 		}
 	}
@@ -94,7 +86,6 @@ int		rec_bruteforce(t_tabs *tab, int *seed)
 	int seedlen;
 
 	seedlen = 0;
-//	bf_printtab(tab);
 	while(seedlen < 20)
 	{
 		if(rec_try(*tab, seed, 0, seedlen))
