@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chain.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 22:27:33 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 22:28:26 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "push_swap.h"
@@ -6,7 +18,7 @@ t_op	*op_new(int op)
 {
 	t_op	*new;
 
-	if(!(new = malloc(sizeof(t_op))))
+	if (!(new = malloc(sizeof(t_op))))
 		return (NULL);
 	new->op = op;
 	new->next = NULL;
@@ -25,7 +37,7 @@ void	op_add(t_op **begin, t_op *new_op)
 		*begin = new_op;
 		return ;
 	}
-	while(last->next != NULL)
+	while (last->next != NULL)
 	{
 		last = last->next;
 	}
@@ -40,36 +52,35 @@ void	op_add_new(t_op **begin, int op)
 	if (!(tmp = op_new(op)))
 	{
 		free_op_list(begin);
-		exit (0);
+		exit(0);
 	}
 	op_add(begin, tmp);
 }
 
 void	write_op(int op)
 {
-	if(op == PB)
+	if (op == PB)
 		write(1, "pb\n", 3);
-	else if(op == PA)
+	else if (op == PA)
 		write(1, "pa\n", 3);
-	else if(op == RA)
+	else if (op == RA)
 		write(1, "ra\n", 3);
-	else if(op == RB)
+	else if (op == RB)
 		write(1, "rb\n", 3);
-	else if(op == RR)
+	else if (op == RR)
 		write(1, "rr\n", 3);
-	else if(op == RRA)
+	else if (op == RRA)
 		write(1, "rra\n", 4);
-	else if(op == RRB)
+	else if (op == RRB)
 		write(1, "rrb\n", 4);
-	else if(op == RRR)
+	else if (op == RRR)
 		write(1, "rrr\n", 4);
-	else if(op == SA)
+	else if (op == SA)
 		write(1, "sa\n", 3);
-	else if(op == SB)
+	else if (op == SB)
 		write(1, "sb\n", 3);
-	else if(op == SS)
+	else if (op == SS)
 		write(1, "ss\n", 3);
-
 }
 
 void	op_list_read(t_op **begin)

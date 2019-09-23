@@ -1,8 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_insort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 23:08:20 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 23:13:14 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
- * INSERT SORT OF B PILE
- */
+#include "push_swap.h"
 
 static int	min_max(t_tab *tab, int *min, int *max)
 {
@@ -19,7 +27,6 @@ static int	min_max(t_tab *tab, int *min, int *max)
 			*min = head->index;
 		if (head->index > *max)
 			*max = head->index;
-
 		head = head->next;
 		i--;
 	}
@@ -27,11 +34,11 @@ static int	min_max(t_tab *tab, int *min, int *max)
 }
 
 /*
- * ^ dist negative
- * v dist positive
- */
+** ^ dist negative
+** v dist positive
+*/
 
-int static	dist_calc(t_tab *tab, int min, int max)
+static int	dist_calc(t_tab *tab, int min, int max)
 {
 	t_elem	*head_prev;
 	t_elem	*head_next;
@@ -43,18 +50,18 @@ int static	dist_calc(t_tab *tab, int min, int max)
 	while (dist < 10)
 	{
 		if (head_prev->index == max)
-			return (-dist);	
+			return (-dist);
 		if (head_next->index == max)
-			return (dist);	
+			return (dist);
 		if (head_prev->index == min)
-			return (-dist);	
+			return (-dist);
 		if (head_next->index == min)
-			return (dist);	
+			return (dist);
 		head_prev = head_prev->prev;
 		head_next = head_next->next;
 		dist++;
 	}
-	return(printf("    >>> error dist calc\n"));
+	return (-999999);
 }
 
 int			b_to_a_insort(t_tab *tab)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_operations.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 22:46:22 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 23:02:28 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		rotate(t_list *list)
@@ -26,12 +38,7 @@ int		swap(t_list *list)
 	first = list->start;
 	sec = list->start->next;
 	if (list->size == 2)
-	{
-		first->prev = sec;
-		first->next = sec;
-		sec->prev = first;
-		sec->next = first;
-	}
+		sec = list->start->next;
 	else
 	{
 		prev = list->start->prev;
@@ -57,7 +64,7 @@ int		push(t_list *from, t_list *to)
 	from->start->next->prev = from->start->prev;
 	from->start->prev->next = from->start->next;
 	from->start = from->start->next;
-	if(to->size < 1)
+	if (to->size < 1)
 	{
 		save->next = save;
 		save->prev = save;

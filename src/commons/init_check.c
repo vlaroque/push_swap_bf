@@ -6,7 +6,7 @@
 /*   By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 01:23:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/21 20:10:34 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/22 22:29:44 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		is_ordered(t_list *list)
 
 	i = 0;
 	elem = list->start;
-	while(i < list->size - 1)
+	while (i < list->size - 1)
 	{
 		if (elem->nbr > elem->next->nbr)
 			return (0);

@@ -65,6 +65,8 @@ int		sswap(t_tab *tab);
 
 /* algo */
 int		algo(t_tab *tab);
+int		pivot_maker(t_tab *tab);
+int		dist_to_next_pivot(t_list *list, int *min);
 
 /* algo_pivot */
 void	is_pivot(t_elem *elem);
@@ -82,6 +84,15 @@ int		b_to_a_insort(t_tab *tab);
 /* algo_swaper */
 int		a_swaper(t_tab *tab);
 
+/*
+**algo_rotations
+*/
+int		a_rev_rotation(t_tab *tab);
+int		a_rotation(t_tab *tab);
+int		bruteforce_for_five(t_tab *tab);
+int		a_to_b_bf(t_tab *tab);
+
+
 /* chain*/
 struct s_op
 {
@@ -95,5 +106,10 @@ void	free_op_list(t_op **begin);
 
 /* ft_instant */
 int		instant_bf(int comb, t_tab *tab);
+
+/*
+** Brutefoce
+*/
+int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles);
 
 #endif

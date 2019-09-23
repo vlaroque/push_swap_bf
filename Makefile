@@ -6,7 +6,7 @@
 #    By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/21 20:12:28 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/23 02:06:55 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CFLAGS = -g
 
 # SOURCES
 
-SRC_PUSH = push_swap.c algorithm.c algo_distances.c algo_pivot.c algo_swaper.c \
-		   algo_insort.c 
+SRC_PUSH = push_swap.c algorithm.c algo_distances.c algo_pivot.c \
+		   algo_insort.c algo_rotations.c
 
 SRC_BF = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c \
 		 bf_recursive_bruteforce.c instant.c
@@ -69,4 +69,4 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 
 clean :
 	echo 'cleaning'
-	rm -Rf $(OBJ)
+	rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)

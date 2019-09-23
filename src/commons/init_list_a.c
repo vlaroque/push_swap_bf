@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_list_a.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 22:32:52 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 22:42:43 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "push_swap.h"
 
@@ -30,14 +42,13 @@ static int		add_to_list(t_list *list, int nbr)
 	return (0);
 }
 
-static int		read_arg_atoi(char *str, int *i, int *nbptr)
+static int		read_arg_atoi(char *str, int *i, int *nbr)
 {
-	long long	nbr;
 	long long	sign;
 
 	sign = 1;
-	nbr = 0;
-	while(str[*i] && str[*i] == ' ')
+	*nbr = 0;
+	while (str[*i] && str[*i] == ' ')
 		(*i)++;
 	if (str[*i] && (str[*i] == '-' || str[*i] == '+'))
 	{
@@ -49,37 +60,37 @@ static int		read_arg_atoi(char *str, int *i, int *nbptr)
 		return (-1);
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		nbr = nbr * 10 + (str[*i] - '0');
-		if (nbr * sign > 2147483647 || nbr * sign < -2147483648 )
+		*nbr = *nbr * 10 + (str[*i] - '0');
+		if (*nbr * sign > 2147483647 || *nbr * sign < -2147483648)
 			return (-1);
 		(*i)++;
 	}
-	while(str[*i] && str[*i] == ' ')
+	while (str[*i] && str[*i] == ' ')
 		(*i)++;
-	*nbptr = (int)(nbr * sign);
+	*nbr = (int)(*nbr * sign);
 	return (0);
 }
 
 static int		read_arg(t_list *list, char *str)
 {
-	int	i;
-	int	nbr;
+	int			i;
+	int			nbr;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(read_arg_atoi(str, &i, &nbr))
+		if (read_arg_atoi(str, &i, &nbr))
 			return (-1);
-		if(add_to_list(list, nbr))
+		if (add_to_list(list, nbr))
 			return (-1);
 	}
 	return (0);
 }
 
-t_list	*init_list_a(int ac, char **av)
+t_list			*init_list_a(int ac, char **av)
 {
-	int		i;
-	t_list	*list;
+	int			i;
+	t_list		*list;
 
 	i = 1;
 	if (!(list = (t_list *)malloc(sizeof(t_list))))

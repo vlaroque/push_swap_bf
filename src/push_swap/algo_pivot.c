@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_pivot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 23:13:26 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 23:24:59 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	is_pivot(t_elem *elem)
@@ -24,8 +36,5 @@ int		choose_pivot(t_list *list)
 		if (head == list->start)
 			break ;
 	}
-//	printf("pivot (%D %D) = %d\n", min, max, (min + max) / 2);
 	return ((min + max) / 2);
 }
-
-

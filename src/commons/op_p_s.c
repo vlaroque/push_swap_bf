@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_p_s.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 22:54:29 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 22:54:43 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <unistd.h>
 
 int		push_a(t_tab *tab)
 {
@@ -28,5 +39,5 @@ int		swap_b(t_tab *tab)
 int		sswap(t_tab *tab)
 {
 	op_add_new(&(tab->ops), SS);
-	return(swap(tab->a) * swap(tab->b));
+	return (swap(tab->a) * swap(tab->b));
 }

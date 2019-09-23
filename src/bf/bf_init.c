@@ -38,8 +38,6 @@ void	read_seed(int *seed, t_tab *tab)
 	}
 }
 
-
-
 int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;

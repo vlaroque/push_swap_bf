@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 22:56:22 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/22 22:57:11 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void swap_p(t_elem **a, t_elem **b)
+static void		swap_p(t_elem **a, t_elem **b)
 {
-	t_elem *tmp;
+	t_elem		*tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-static int partition(t_elem **tab, int first, int last, int pivot)
+static int		partition(t_elem **tab, int first, int last, int pivot)
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	j = first;
 	i = first;
@@ -30,9 +42,9 @@ static int partition(t_elem **tab, int first, int last, int pivot)
 	return (j);
 }
 
-void	quick_sort(t_elem **tab, int first, int last)
+void			quick_sort(t_elem **tab, int first, int last)
 {
-	int pivot;
+	int			pivot;
 
 	if (first >= last)
 		return ;
@@ -41,4 +53,3 @@ void	quick_sort(t_elem **tab, int first, int last)
 	quick_sort(tab, first, pivot - 1);
 	quick_sort(tab, pivot + 1, last);
 }
-

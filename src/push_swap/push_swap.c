@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 14:07:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/22 23:26:40 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		are_useless_ops(int i)
 
 static int		op_modifier(t_op *head, t_op **prev)
 {
-	t_op	*save;
+	t_op		*save;
 
 	if (head->next->op != 0 && are_useless_ops(head->op | head->next->op) == -1)
 	{
@@ -54,10 +54,10 @@ static int		op_modifier(t_op *head, t_op **prev)
 
 static int		op_list_opti(t_op **begin)
 {
-	t_op	*head;
-	t_op	*save;
-	t_op	**prev;
-	int		res;
+	t_op		*head;
+	t_op		*save;
+	t_op		**prev;
+	int			res;
 
 	res = 0;
 	if (begin == NULL)
@@ -69,7 +69,7 @@ static int		op_list_opti(t_op **begin)
 	while (head->next != NULL)
 	{
 		if (op_modifier(head, prev))
-		{	
+		{
 			res = 1;
 			head = (*prev)->next;
 		}
@@ -79,10 +79,10 @@ static int		op_list_opti(t_op **begin)
 	return (res);
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
-	t_tab	tab;
-	t_tab	*ptr;
+	t_tab		tab;
+	t_tab		*ptr;
 
 	if (!(tab.a = init_list_a(ac, av)))
 		return (0);

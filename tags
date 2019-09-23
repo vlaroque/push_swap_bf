@@ -47,7 +47,7 @@ SRC_BF	Makefile	/^SRC_BF = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c \\$/;"	m
 SRC_CHECK	Makefile	/^SRC_CHECK = checker.c$/;"	m
 SRC_COMMON	Makefile	/^SRC_COMMON = init_list_a.c list_commons.c quicksort.c init_check.c\\$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
-SRC_PUSH	Makefile	/^SRC_PUSH = push_swap.c algorithm.c algo_distances.c algo_pivot.c algo_swaper.c \\$/;"	m
+SRC_PUSH	Makefile	/^SRC_PUSH = push_swap.c algorithm.c algo_distances.c algo_pivot.c \\$/;"	m
 SS	inc/binop.h	/^# define SS /;"	d
 TABLEN	inc/bf_header.h	/^# define TABLEN /;"	d
 a	inc/bf_header.h	/^	int a[TABLEN];$/;"	m	struct:s_tabs
@@ -57,7 +57,6 @@ a_lock	inc/bf_header.h	/^	int a_lock;$/;"	m	struct:s_tabs
 a_max	inc/bf_header.h	/^	int a_max;$/;"	m	struct:s_tabs
 a_rev_rotation	src/push_swap/algorithm.c	/^int		a_rev_rotation(t_tab *tab)$/;"	f
 a_rotation	src/push_swap/algorithm.c	/^int		a_rotation(t_tab *tab)$/;"	f
-a_swaper	src/push_swap/algo_swaper.c	/^int		a_swaper(t_tab *tab)$/;"	f
 a_to_b	src/push_swap/algorithm.c	/^int		a_to_b(t_tab *tab)$/;"	f
 a_to_b_bf	src/push_swap/algorithm.c	/^int		a_to_b_bf(t_tab *tab)$/;"	f
 add_to_list	src/commons/init_list_a.c	/^static int		add_to_list(t_list *list, int nbr)$/;"	f	file:
@@ -86,12 +85,13 @@ bf_swap_a	src/bf/bf_op.c	/^int		bf_swap_a(t_tabs *tab)$/;"	f
 bf_swap_ab	src/bf/bf_op.c	/^int		bf_swap_ab(t_tabs *tab)$/;"	f
 bf_swap_b	src/bf/bf_op.c	/^int		bf_swap_b(t_tabs *tab)$/;"	f
 bruteforce	src/bf/bf_bruteforce.c	/^int		bruteforce(t_tabs *tab)$/;"	f
+bruteforce_for_five	src/push_swap/algorithm.c	/^int		bruteforce_for_five(t_tab *tab)$/;"	f
 choose_pivot	src/push_swap/algo_pivot.c	/^int		choose_pivot(t_list *list)$/;"	f
 cmb	inc/instant.h	/^	int		cmb;$/;"	m	struct:s_solution
 combination_five	src/bf/combi.c	/^int		combination_five(int comb)$/;"	f
 combination_five	src/bf/instant.c	/^static int		combination_five(int comb)$/;"	f	file:
 data	inc/push_swap.h	/^	int		data;$/;"	m	struct:s_elem
-dist_calc	src/push_swap/algo_insort.c	/^int static	dist_calc(t_tab *tab, int min, int max)$/;"	f	file:
+dist_calc	src/push_swap/algo_insort.c	/^static int	dist_calc(t_tab *tab, int min, int max)$/;"	f	file:
 dist_neg_pivot	src/push_swap/algo_distances.c	/^int		dist_neg_pivot(t_list *list, int pivot)$/;"	f
 dist_pivot	src/push_swap/algo_distances.c	/^int		dist_pivot(t_list *list, int pivot, char p_m)$/;"	f
 dist_to_next_pivot	src/push_swap/algorithm.c	/^int		dist_to_next_pivot(t_list *list, int *min)$/;"	f
@@ -101,7 +101,6 @@ exec_read_three	src/checker/checker.c	/^static int		exec_read_three(char *buff, 
 free_both_lists	src/commons/free_struct.c	/^void	free_both_lists(t_tab *tab)$/;"	f
 free_list	src/commons/free_struct.c	/^void	free_list(t_list *list)$/;"	f
 free_op_list	src/commons/free_struct.c	/^void	free_op_list(t_op **begin)$/;"	f
-head_operations	src/push_swap/algo_swaper.c	/^static int	head_operations(t_tab *tab)$/;"	f	file:
 index	inc/push_swap.h	/^	int		index;$/;"	m	struct:s_elem
 indexator	src/commons/init_check.c	/^int		indexator(t_list *list)$/;"	f
 init_a_locked_bf	src/bf/bf_init.c	/^int     init_a_locked_bf(int *cmb, int len, t_tab *piles)$/;"	f
@@ -109,7 +108,7 @@ init_a_unlocked_bf	src/bf/bf_init.c	/^int     init_a_unlocked_bf(int *cmb, int l
 init_b_locked_bf	src/bf/bf_init.c	/^int     init_b_locked_bf(int *cmb, int len, t_tab *piles)$/;"	f
 init_bf	src/bf/bf_main.c	/^int     init_bf(int *cmb, int len)$/;"	f
 init_empty_list	src/commons/list_commons.c	/^t_list		*init_empty_list(void)$/;"	f
-init_list_a	src/commons/init_list_a.c	/^t_list	*init_list_a(int ac, char **av)$/;"	f
+init_list_a	src/commons/init_list_a.c	/^t_list			*init_list_a(int ac, char **av)$/;"	f
 instant_bf	src/bf/instant.c	/^int				instant_bf(int comb, t_tab *tab)$/;"	f
 is_ordered	src/commons/init_check.c	/^int		is_ordered(t_list *list)$/;"	f
 is_pivot	src/push_swap/algo_pivot.c	/^void	is_pivot(t_elem *elem)$/;"	f
@@ -117,7 +116,7 @@ little_solution	src/bf/instant.c	/^static char		*little_solution(int comb)$/;"	f
 main	src/bf/bf_main.c	/^int     main(void)$/;"	f
 main	src/bf/combi.c	/^int		main(void)$/;"	f
 main	src/checker/checker.c	/^int				main(int ac, char **av)$/;"	f
-main	src/push_swap/push_swap.c	/^int		main(int ac, char **av)$/;"	f
+main	src/push_swap/push_swap.c	/^int				main(int ac, char **av)$/;"	f
 make_op	src/bf/bf_recursive_bruteforce.c	/^int		make_op(t_tabs *tab, int op)$/;"	f
 min_max	src/push_swap/algo_insort.c	/^static int	min_max(t_tab *tab, int *min, int *max)$/;"	f	file:
 nbr	inc/push_swap.h	/^	int		nbr;$/;"	m	struct:s_elem
@@ -134,18 +133,18 @@ op_new	src/commons/chain.c	/^t_op	*op_new(int op)$/;"	f
 op_usefull	src/bf/bf_recursive_bruteforce.c	/^int		op_usefull(int	both_op)$/;"	f
 ops	inc/instant.h	/^	char	ops[15];$/;"	m	struct:s_solution
 ops	inc/push_swap.h	/^	t_op	*ops;$/;"	m	struct:s_tab
-partition	src/commons/quicksort.c	/^static int partition(t_elem **tab, int first, int last, int pivot)$/;"	f	file:
+partition	src/commons/quicksort.c	/^static int		partition(t_elem **tab, int first, int last, int pivot)$/;"	f	file:
 pivot_maker	src/push_swap/algorithm.c	/^int		pivot_maker(t_tab *tab)$/;"	f
 post_op	src/commons/init_check.c	/^int		post_op(t_list *list)$/;"	f
 prev	inc/push_swap.h	/^	t_elem	*prev;$/;"	m	struct:s_elem
-print_tabs	src/commons/list_commons.c	/^void		print_tabs(t_tab *tab)$/;"	f
-printlist	src/commons/init_errors.c	/^void	printlist(t_list *list)$/;"	f
+print_tabs	src/commons/to_delete.c	/^void		print_tabs(t_tab *tab)$/;"	f
+printlist	src/commons/to_delete.c	/^void		printlist(t_list *list)$/;"	f
 push	src/commons/list_operations.c	/^int		push(t_list *from, t_list *to)$/;"	f
 push_a	src/commons/op_p_s.c	/^int		push_a(t_tab *tab)$/;"	f
 push_b	src/commons/op_p_s.c	/^int		push_b(t_tab *tab)$/;"	f
-quick_sort	src/commons/quicksort.c	/^void	quick_sort(t_elem **tab, int first, int last)$/;"	f
+quick_sort	src/commons/quicksort.c	/^void			quick_sort(t_elem **tab, int first, int last)$/;"	f
 read_arg	src/commons/init_list_a.c	/^static int		read_arg(t_list *list, char *str)$/;"	f	file:
-read_arg_atoi	src/commons/init_list_a.c	/^static int		read_arg_atoi(char *str, int *i, int *nbptr)$/;"	f	file:
+read_arg_atoi	src/commons/init_list_a.c	/^static int		read_arg_atoi(char *str, int *i, int *nbr)$/;"	f	file:
 read_seed	src/bf/bf_init.c	/^void	read_seed(int *seed, t_tab *tab)$/;"	f
 read_solution	src/bf/instant.c	/^static void		read_solution(char *solution, t_tab *tab, int i)$/;"	f	file:
 reader	src/checker/checker.c	/^int				reader(t_tab *tab)$/;"	f
@@ -174,7 +173,7 @@ start	inc/push_swap.h	/^	t_elem	*start;$/;"	m	struct:s_list
 swap	src/commons/list_operations.c	/^int		swap(t_list *list)$/;"	f
 swap_a	src/commons/op_p_s.c	/^int		swap_a(t_tab *tab)$/;"	f
 swap_b	src/commons/op_p_s.c	/^int		swap_b(t_tab *tab)$/;"	f
-swap_p	src/commons/quicksort.c	/^static void swap_p(t_elem **a, t_elem **b)$/;"	f	file:
+swap_p	src/commons/quicksort.c	/^static void		swap_p(t_elem **a, t_elem **b)$/;"	f	file:
 t_elem	inc/push_swap.h	/^typedef	struct s_elem t_elem;$/;"	t	typeref:struct:s_elem
 t_list	inc/push_swap.h	/^}				t_list;$/;"	t	typeref:struct:s_list
 t_op	inc/push_swap.h	/^typedef	struct s_op t_op;$/;"	t	typeref:struct:s_op

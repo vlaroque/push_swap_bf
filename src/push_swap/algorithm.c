@@ -1,13 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/23 01:20:31 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/23 02:13:57 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <stdlib.h>
 
 /*
- * WARNING all pivot variables are in reality for the index !
- */
-
-/*
- * commence sur une case non pivot, jusqu'au prochain
- */
+** WARNING all pivot variables are in reality for the index !
+*/
 
 int		pivot_maker(t_tab *tab)
 {
@@ -16,30 +24,19 @@ int		pivot_maker(t_tab *tab)
 	head = tab->a->start;
 	while (head->data != PIVOT)
 	{
-		if(head->prev->data == PIVOT && head->prev->index == head->index - 1)
+		if (head->prev->data == PIVOT && head->prev->index == head->index - 1)
 			head->data = PIVOT;
 		head = head->next;
 	}
 	head = head->prev;
 	while (head->data != PIVOT)
 	{
-		if(head->next->data == PIVOT && head->next->index == head->index + 1)
+		if (head->next->data == PIVOT && head->next->index == head->index + 1)
 			head->data = PIVOT;
 		head = head->prev;
 	}
 	return (1);
 }
-
-
-int		a_rev_rotation(t_tab *tab)
-{
-	t_elem *elem;
-
-	while(tab->a->start->prev->data != PIVOT)
-		revrotate_a(tab);
-	return (0);
-}
-
 
 int		dist_to_next_pivot(t_list *list, int *min)
 {
@@ -50,7 +47,7 @@ int		dist_to_next_pivot(t_list *list, int *min)
 	tmp = list->start;
 	if ((min))
 		*min = tmp->index;
-	while(tmp->data != PIVOT)
+	while (tmp->data != PIVOT)
 	{
 		dist++;
 		if ((min) && *min > tmp->index)
@@ -58,32 +55,6 @@ int		dist_to_next_pivot(t_list *list, int *min)
 		tmp = tmp->next;
 	}
 	return (dist);
-}
-
-int		a_to_b_bf(t_tab *tab)
-{
-	int		dist;
-	int		i;
-	int		combi;
-	int		min;
-	t_elem	*tmp;
-
-	a_rev_rotation(tab);
-	dist = dist_to_next_pivot(tab->a, &min);
-	if (dist > 5)
-		return (0);
-	i = 0;
-	tmp = tab->a->start;
-	combi = 0;
-	while (i < dist)
-	{
-		tmp->data = PIVOT;
-		combi = ((tmp->index - min + 1) + combi * 10);
-		tmp = tmp->next;
-		i++;
-	}
-	instant_bf(combi, tab);
-	return (1);
 }
 
 int		a_to_b(t_tab *tab)
@@ -96,27 +67,24 @@ int		a_to_b(t_tab *tab)
 	dist = dist_pivot(tab->a, pivot, '-');
 	if (!(first) && a_to_b_bf(tab))
 		return (1);
-	while (dist >= 0)
+	while (dist-- >= 0)
 	{
 		if (tab->a->start->index <= pivot)
 		{
 			push_b(tab);
-			if(tab->b->start->index == pivot)
+			if (tab->b->start->index == pivot)
 				rotate_b(tab);
 		}
 		else
 			rotate_a(tab);
-		dist--;
 	}
 	if (!(first))
 		a_rev_rotation(tab);
 	revrotate_b(tab);
 	push_a(tab);
 	is_pivot(tab->a->start);
-	first = 0;
-	return (1);
+	return ((first = 0));
 }
-
 
 int		b_to_a(t_tab *tab)
 {
@@ -127,10 +95,10 @@ int		b_to_a(t_tab *tab)
 	dist = dist_pivot(tab->b, pivot, '+') + 1;
 	while (dist > 0)
 	{
-		if(tab->b->start->index >= pivot)
+		if (tab->b->start->index >= pivot)
 		{
 			push_a(tab);
-			if(tab->a->start->index == pivot)
+			if (tab->a->start->index == pivot)
 				rotate_a(tab);
 		}
 		else
@@ -142,50 +110,9 @@ int		b_to_a(t_tab *tab)
 	return (1);
 }
 
-int		a_rotation(t_tab *tab)
-{
-	t_elem *elem;
-	int i;
-
-	i = 0;
-	while(tab->a->start->data == PIVOT)
-	{
-		rotate_a(tab);
-		if (tab->a->start->data != PIVOT)
-			pivot_maker(tab);
-		if(tab->a->start->index == 0 && is_ordered(tab->a) && tab->b->size == 0)
-			return (1);
-		if (++i > 500)
-			exit (0);
-	}
-	return (0);
-}
-
-int		bruteforce_for_five(t_tab *tab)
-{
-	int		i;
-	t_elem	*head;
-	int		a[5];
-
-	if (tab->a->size > 5)
-		return (0);
-	i = 0;
-	head = tab->a->start;
-	while (i < tab->a->size)
-	{
-		a[i] = head->index + 1;
-		head = head->next;
-		i++;
-	}
-	init_a_unlocked_bf(a, tab->a->size, tab);
-	return (1);
-}
-
 int		algo(t_tab *tab)
 {
-	int i = 0;
-
-	if(bruteforce_for_five(tab))
+	if (bruteforce_for_five(tab))
 		return (1);
 	while (10)
 	{
