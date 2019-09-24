@@ -1,5 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bf_recursive_bruteforce.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 13:10:41 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/24 13:13:17 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "bf_header.h"
+
+int		bf_is_sorted(t_tabs *tab)
+{
+	int i;
+	int revro;
+
+	i = 0;
+	revro = tab->a_head;
+	if (tab->a_lock)
+	{
+		if (!(tab->a_head & (tab->a_max >> 1)))
+			return (0);
+		while (revro > 1)
+		{
+			bf_revrotate_a(tab);
+			revro >>= 1;
+		}
+	}
+	if (!(tab->b_max & 1))
+		return (0);
+	while (tab->a_max > 1 << i)
+	{
+		if (tab->a[i] != 1 << i)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int		make_op(t_tabs *tab, int op)
 {
@@ -30,11 +70,7 @@ int		make_op(t_tabs *tab, int op)
 	return (0);
 }
 
-/*
- * op usefull teste si les deux operations sont compatibles
- */
-
-int		op_usefull(int	both_op)
+int		op_usefull(int both_op)
 {
 	static int	useless[] = {(RA | RB), (RRA | RRB), (SA | SB),
 							(RA | RRA), (RB | RRB), (RR | RRR),
@@ -61,7 +97,7 @@ int		rec_try(t_tabs tab, int *seed, int head, int len)
 	op = 1;
 	if (head == len)
 	{
-		if(bf_is_sorted(&tab))
+		if (bf_is_sorted(&tab))
 			return (1);
 		return (0);
 	}
@@ -86,9 +122,9 @@ int		rec_bruteforce(t_tabs *tab, int *seed)
 	int seedlen;
 
 	seedlen = 0;
-	while(seedlen < 20)
+	while (seedlen < 20)
 	{
-		if(rec_try(*tab, seed, 0, seedlen))
+		if (rec_try(*tab, seed, 0, seedlen))
 			break ;
 		seedlen++;
 	}

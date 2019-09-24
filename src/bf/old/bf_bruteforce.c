@@ -1,33 +1,5 @@
 #include "bf_header.h"
 
-int		bf_is_sorted(t_tabs *tab)
-{
-	int i;
-	int revro;
-
-	i = 0;
-	revro = tab->a_head;
-	if (tab->a_lock)
-	{
-		if (!(tab->a_head & (tab->a_max >> 1)))
-			return (0);
-		while (revro > 1)
-		{
-			bf_revrotate_a(tab);
-			revro >>= 1;
-		}
-	}
-	if (!(tab->b_max & 1))
-		return (0);
-	while (tab->a_max > 1 << i)
-	{
-		if (tab->a[i] != 1 << i)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int		bf_seed_try(t_tabs *tab, int *seed)
 {
 	int		i;

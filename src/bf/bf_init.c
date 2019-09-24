@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bf_init.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 19:18:19 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/24 19:20:34 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "bf_header.h"
-
-/*
- * a_lock don't care about the last position
- */
 
 void	read_seed(int *seed, t_tab *tab, int i)
 {
@@ -38,9 +46,10 @@ int		init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
-	int		seed[SEEDLEN] = {0};
+	int		seed[SEEDLEN];
 
-	bzero(&tab, sizeof(t_tabs));
+	ft_bzero(seed, sizeof(int) * SEEDLEN);
+	ft_bzero(&tab, sizeof(t_tabs));
 	i = 0;
 	while (i < len)
 	{
@@ -55,46 +64,3 @@ int		init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 	read_seed(seed, piles, -1);
 	return (1);
 }
-/*
-int		init_a_locked_bf(int *cmb, int len, t_tab *piles)
-{
-	int		i;
-	t_tabs	tab;
-	int		seed[SEEDLEN] = {0};
-
-	bzero(&tab, sizeof(t_tabs));
-	i = 0;
-	while (i < len)
-	{
-		tab.a[cmb[i] - 1] = 1 << i;
-		i++;
-	}
-	tab.a_max = 1 << len;
-	tab.b_max = 1;
-	tab.a_lock = 1;
-	tab.a_head = 1;
-	rec_bruteforce(&tab, seed);
-	read_seed(seed, piles);
-	return (1);
-}
-
-int		init_b_locked_bf(int *cmb, int len, t_tab *piles)
-{
-	int		i;
-	t_tabs	tab;
-	int		seed[SEEDLEN] = {0};
-
-	bzero(&tab, sizeof(t_tabs));
-	i = 0;
-	while (i < len)
-	{
-		tab.a[cmb[i] - 1] = 1 << i;
-		i++;
-	}
-	tab.a_max = 1 << len;
-	tab.b_max = 1;
-	tab.a_lock = 1;
-	tab.a_head = 1;
-	rec_bruteforce(&tab, seed);
-	return (1);
-}*/

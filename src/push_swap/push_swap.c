@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 23:26:40 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/24 20:08:17 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				main(int ac, char **av)
 	t_tab		tab;
 	t_tab		*ptr;
 
+	tab.ops = NULL;
 	if (!(tab.a = init_list_a(ac, av)))
 		return (0);
 	tab.b = init_empty_list();

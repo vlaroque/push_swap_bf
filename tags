@@ -7,9 +7,9 @@
 BF_PATH	Makefile	/^BF_PATH = bf$/;"	m
 BINOP_H	inc/binop.h	/^# define BINOP_H$/;"	d
 CC	Makefile	/^CC = gcc$/;"	m
-CC	src/bf/Makefile	/^CC = gcc$/;"	m
+CC	src/bf/old/Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -g$/;"	m
-CFLAGS	src/bf/Makefile	/^CFLAGS = -Wall -Wextra$/;"	m
+CFLAGS	src/bf/old/Makefile	/^CFLAGS = -Wall -Wextra$/;"	m
 CHECK_OBJ	Makefile	/^CHECK_OBJ = $(addprefix $(OBJ_PATH)\/,$(CHECK_SRC_FILES:.c=.o))$/;"	m
 CHECK_PATH	Makefile	/^CHECK_PATH = checker$/;"	m
 CHECK_SRC_FILES	Makefile	/^CHECK_SRC_FILES = $(addprefix $(CHECK_PATH)\/,$(SRC_CHECK))$/;"	m
@@ -18,13 +18,13 @@ COMMON_PATH	Makefile	/^COMMON_PATH = commons$/;"	m
 END	inc/binop.h	/^# define END /;"	d
 HEADER_H	inc/bf_header.h	/^# define HEADER_H$/;"	d
 HEADER_PATH	Makefile	/^HEADER_PATH = inc$/;"	m
-INC	src/bf/Makefile	/^INC = ..\/..\/inc$/;"	m
+INC	src/bf/old/Makefile	/^INC = ..\/..\/inc$/;"	m
 INC_PATH	Makefile	/^INC_PATH = inc$/;"	m
 INSTANT_H	inc/instant.h	/^# define INSTANT_H$/;"	d
-NAME	src/bf/Makefile	/^NAME = bruteforce$/;"	m
+NAME	src/bf/old/Makefile	/^NAME = bruteforce$/;"	m
 NAME1	Makefile	/^NAME1 = push_swap$/;"	m
 NAME2	Makefile	/^NAME2 = checker$/;"	m
-OBJ	src/bf/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	src/bf/old/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ_PATH	Makefile	/^OBJ_PATH = obj$/;"	m
 PA	inc/binop.h	/^# define PA /;"	d
 PB	inc/binop.h	/^# define PB /;"	d
@@ -42,8 +42,8 @@ RRR	inc/binop.h	/^# define RRR /;"	d
 SA	inc/binop.h	/^# define SA /;"	d
 SB	inc/binop.h	/^# define SB /;"	d
 SEEDLEN	inc/bf_header.h	/^# define SEEDLEN /;"	d
-SRC	src/bf/Makefile	/^SRC = bf_bruteforce.c bf_debug.c bf_op.c bf_main.c bf_recursive_bruteforce.c$/;"	m
-SRC_BF	Makefile	/^SRC_BF = bf_bruteforce.c bf_debug.c bf_init.c bf_op.c \\$/;"	m
+SRC	src/bf/old/Makefile	/^SRC = bf_bruteforce.c bf_debug.c bf_op.c bf_main.c bf_recursive_bruteforce.c$/;"	m
+SRC_BF	Makefile	/^SRC_BF = bf_init.c bf_op.c bf_op_rotations.c bf_op_dbl.c \\$/;"	m
 SRC_CHECK	Makefile	/^SRC_CHECK = checker.c$/;"	m
 SRC_COMMON	Makefile	/^SRC_COMMON = init_list_a.c list_commons.c quicksort.c init_check.c\\$/;"	m
 SRC_PATH	Makefile	/^SRC_PATH = src$/;"	m
@@ -55,10 +55,10 @@ a	inc/push_swap.h	/^	t_list	*a;$/;"	m	struct:s_tab
 a_head	inc/bf_header.h	/^	int a_head;$/;"	m	struct:s_tabs
 a_lock	inc/bf_header.h	/^	int a_lock;$/;"	m	struct:s_tabs
 a_max	inc/bf_header.h	/^	int a_max;$/;"	m	struct:s_tabs
-a_rev_rotation	src/push_swap/algorithm.c	/^int		a_rev_rotation(t_tab *tab)$/;"	f
-a_rotation	src/push_swap/algorithm.c	/^int		a_rotation(t_tab *tab)$/;"	f
+a_rev_rotation	src/push_swap/algo_rotations.c	/^int		a_rev_rotation(t_tab *tab)$/;"	f
+a_rotation	src/push_swap/algo_rotations.c	/^int		a_rotation(t_tab *tab)$/;"	f
 a_to_b	src/push_swap/algorithm.c	/^int		a_to_b(t_tab *tab)$/;"	f
-a_to_b_bf	src/push_swap/algorithm.c	/^int		a_to_b_bf(t_tab *tab)$/;"	f
+a_to_b_bf	src/push_swap/algo_rotations.c	/^int		a_to_b_bf(t_tab *tab)$/;"	f
 add_to_list	src/commons/init_list_a.c	/^static int		add_to_list(t_list *list, int nbr)$/;"	f	file:
 algo	src/push_swap/algorithm.c	/^int		algo(t_tab *tab)$/;"	f
 are_useless_ops	src/push_swap/push_swap.c	/^static int		are_useless_ops(int i)$/;"	f	file:
@@ -68,24 +68,24 @@ b_max	inc/bf_header.h	/^	int b_max;$/;"	m	struct:s_tabs
 b_to_a	src/push_swap/algorithm.c	/^int		b_to_a(t_tab *tab)$/;"	f
 b_to_a_insort	src/push_swap/algo_insort.c	/^int			b_to_a_insort(t_tab *tab)$/;"	f
 best_dist	src/push_swap/algo_distances.c	/^int		best_dist(int pos, int neg)$/;"	f
-bf_is_sorted	src/bf/bf_bruteforce.c	/^int		bf_is_sorted(t_tabs *tab)$/;"	f
-bf_printseed	src/bf/bf_debug.c	/^int		bf_printseed(int *seed)$/;"	f
-bf_printtab	src/bf/bf_debug.c	/^int		bf_printtab(t_tabs *tab)$/;"	f
+bf_is_sorted	src/bf/bf_recursive_bruteforce.c	/^int		bf_is_sorted(t_tabs *tab)$/;"	f
+bf_printseed	src/bf/old/bf_debug.c	/^int		bf_printseed(int *seed)$/;"	f
+bf_printtab	src/bf/old/bf_debug.c	/^int		bf_printtab(t_tabs *tab)$/;"	f
 bf_push_a	src/bf/bf_op.c	/^int		bf_push_a(t_tabs *tab)$/;"	f
 bf_push_b	src/bf/bf_op.c	/^int		bf_push_b(t_tabs *tab)$/;"	f
-bf_revrotate_a	src/bf/bf_op.c	/^int		bf_revrotate_a(t_tabs *tab)$/;"	f
-bf_revrotate_ab	src/bf/bf_op.c	/^int		bf_revrotate_ab(t_tabs *tab)$/;"	f
-bf_revrotate_b	src/bf/bf_op.c	/^int		bf_revrotate_b(t_tabs *tab)$/;"	f
-bf_rotate_a	src/bf/bf_op.c	/^int		bf_rotate_a(t_tabs *tab)$/;"	f
-bf_rotate_ab	src/bf/bf_op.c	/^int		bf_rotate_ab(t_tabs *tab)$/;"	f
-bf_rotate_b	src/bf/bf_op.c	/^int		bf_rotate_b(t_tabs *tab)$/;"	f
-bf_seed_generator	src/bf/bf_bruteforce.c	/^int		bf_seed_generator(t_tabs *tab, int *seed, int head, int len)$/;"	f
-bf_seed_try	src/bf/bf_bruteforce.c	/^int		bf_seed_try(t_tabs *tab, int *seed)$/;"	f
+bf_revrotate_a	src/bf/bf_op_rotations.c	/^int		bf_revrotate_a(t_tabs *tab)$/;"	f
+bf_revrotate_ab	src/bf/bf_op_dbl.c	/^int		bf_revrotate_ab(t_tabs *tab)$/;"	f
+bf_revrotate_b	src/bf/bf_op_rotations.c	/^int		bf_revrotate_b(t_tabs *tab)$/;"	f
+bf_rotate_a	src/bf/bf_op_rotations.c	/^int		bf_rotate_a(t_tabs *tab)$/;"	f
+bf_rotate_ab	src/bf/bf_op_dbl.c	/^int		bf_rotate_ab(t_tabs *tab)$/;"	f
+bf_rotate_b	src/bf/bf_op_rotations.c	/^int		bf_rotate_b(t_tabs *tab)$/;"	f
+bf_seed_generator	src/bf/old/bf_bruteforce.c	/^int		bf_seed_generator(t_tabs *tab, int *seed, int head, int len)$/;"	f
+bf_seed_try	src/bf/old/bf_bruteforce.c	/^int		bf_seed_try(t_tabs *tab, int *seed)$/;"	f
 bf_swap_a	src/bf/bf_op.c	/^int		bf_swap_a(t_tabs *tab)$/;"	f
-bf_swap_ab	src/bf/bf_op.c	/^int		bf_swap_ab(t_tabs *tab)$/;"	f
+bf_swap_ab	src/bf/bf_op_dbl.c	/^int		bf_swap_ab(t_tabs *tab)$/;"	f
 bf_swap_b	src/bf/bf_op.c	/^int		bf_swap_b(t_tabs *tab)$/;"	f
-bruteforce	src/bf/bf_bruteforce.c	/^int		bruteforce(t_tabs *tab)$/;"	f
-bruteforce_for_five	src/push_swap/algorithm.c	/^int		bruteforce_for_five(t_tab *tab)$/;"	f
+bruteforce	src/bf/old/bf_bruteforce.c	/^int		bruteforce(t_tabs *tab)$/;"	f
+bruteforce_for_five	src/push_swap/algo_rotations.c	/^int		bruteforce_for_five(t_tab *tab)$/;"	f
 choose_pivot	src/push_swap/algo_pivot.c	/^int		choose_pivot(t_list *list)$/;"	f
 cmb	inc/instant.h	/^	int		cmb;$/;"	m	struct:s_solution
 combination_five	src/bf/combi.c	/^int		combination_five(int comb)$/;"	f
@@ -101,20 +101,19 @@ exec_read_three	src/checker/checker.c	/^static int		exec_read_three(char *buff, 
 free_both_lists	src/commons/free_struct.c	/^void	free_both_lists(t_tab *tab)$/;"	f
 free_list	src/commons/free_struct.c	/^void	free_list(t_list *list)$/;"	f
 free_op_list	src/commons/free_struct.c	/^void	free_op_list(t_op **begin)$/;"	f
+ft_bzero	src/commons/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
 index	inc/push_swap.h	/^	int		index;$/;"	m	struct:s_elem
 indexator	src/commons/init_check.c	/^int		indexator(t_list *list)$/;"	f
-init_a_locked_bf	src/bf/bf_init.c	/^int     init_a_locked_bf(int *cmb, int len, t_tab *piles)$/;"	f
-init_a_unlocked_bf	src/bf/bf_init.c	/^int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)$/;"	f
-init_b_locked_bf	src/bf/bf_init.c	/^int     init_b_locked_bf(int *cmb, int len, t_tab *piles)$/;"	f
-init_bf	src/bf/bf_main.c	/^int     init_bf(int *cmb, int len)$/;"	f
+init_a_unlocked_bf	src/bf/bf_init.c	/^int		init_a_unlocked_bf(int *cmb, int len, t_tab *piles)$/;"	f
+init_bf	src/bf/old/bf_main.c	/^int     init_bf(int *cmb, int len)$/;"	f
 init_empty_list	src/commons/list_commons.c	/^t_list		*init_empty_list(void)$/;"	f
 init_list_a	src/commons/init_list_a.c	/^t_list			*init_list_a(int ac, char **av)$/;"	f
 instant_bf	src/bf/instant.c	/^int				instant_bf(int comb, t_tab *tab)$/;"	f
 is_ordered	src/commons/init_check.c	/^int		is_ordered(t_list *list)$/;"	f
 is_pivot	src/push_swap/algo_pivot.c	/^void	is_pivot(t_elem *elem)$/;"	f
 little_solution	src/bf/instant.c	/^static char		*little_solution(int comb)$/;"	f	file:
-main	src/bf/bf_main.c	/^int     main(void)$/;"	f
 main	src/bf/combi.c	/^int		main(void)$/;"	f
+main	src/bf/old/bf_main.c	/^int     main(void)$/;"	f
 main	src/checker/checker.c	/^int				main(int ac, char **av)$/;"	f
 main	src/push_swap/push_swap.c	/^int				main(int ac, char **av)$/;"	f
 make_op	src/bf/bf_recursive_bruteforce.c	/^int		make_op(t_tabs *tab, int op)$/;"	f
@@ -122,7 +121,7 @@ min_max	src/push_swap/algo_insort.c	/^static int	min_max(t_tab *tab, int *min, i
 nbr	inc/push_swap.h	/^	int		nbr;$/;"	m	struct:s_elem
 next	inc/push_swap.h	/^	t_elem	*next;$/;"	m	struct:s_elem
 next	inc/push_swap.h	/^	t_op	*next;$/;"	m	struct:s_op
-next_cmb	src/bf/bf_main.c	/^int     next_cmb(int *cmb, int head, int len)$/;"	f
+next_cmb	src/bf/old/bf_main.c	/^int     next_cmb(int *cmb, int head, int len)$/;"	f
 op	inc/push_swap.h	/^	int		op;$/;"	m	struct:s_op
 op_add	src/commons/chain.c	/^void	op_add(t_op **begin, t_op *new_op)$/;"	f
 op_add_new	src/commons/chain.c	/^void	op_add_new(t_op **begin, int op)$/;"	f
@@ -130,7 +129,7 @@ op_list_opti	src/push_swap/push_swap.c	/^static int		op_list_opti(t_op **begin)$
 op_list_read	src/commons/chain.c	/^void	op_list_read(t_op **begin)$/;"	f
 op_modifier	src/push_swap/push_swap.c	/^static int		op_modifier(t_op *head, t_op **prev)$/;"	f	file:
 op_new	src/commons/chain.c	/^t_op	*op_new(int op)$/;"	f
-op_usefull	src/bf/bf_recursive_bruteforce.c	/^int		op_usefull(int	both_op)$/;"	f
+op_usefull	src/bf/bf_recursive_bruteforce.c	/^int		op_usefull(int both_op)$/;"	f
 ops	inc/instant.h	/^	char	ops[15];$/;"	m	struct:s_solution
 ops	inc/push_swap.h	/^	t_op	*ops;$/;"	m	struct:s_tab
 partition	src/commons/quicksort.c	/^static int		partition(t_elem **tab, int first, int last, int pivot)$/;"	f	file:
@@ -145,7 +144,7 @@ push_b	src/commons/op_p_s.c	/^int		push_b(t_tab *tab)$/;"	f
 quick_sort	src/commons/quicksort.c	/^void			quick_sort(t_elem **tab, int first, int last)$/;"	f
 read_arg	src/commons/init_list_a.c	/^static int		read_arg(t_list *list, char *str)$/;"	f	file:
 read_arg_atoi	src/commons/init_list_a.c	/^static int		read_arg_atoi(char *str, int *i, int *nbr)$/;"	f	file:
-read_seed	src/bf/bf_init.c	/^void	read_seed(int *seed, t_tab *tab)$/;"	f
+read_seed	src/bf/bf_init.c	/^void	read_seed(int *seed, t_tab *tab, int i)$/;"	f
 read_solution	src/bf/instant.c	/^static void		read_solution(char *solution, t_tab *tab, int i)$/;"	f	file:
 reader	src/checker/checker.c	/^int				reader(t_tab *tab)$/;"	f
 rec_bruteforce	src/bf/bf_recursive_bruteforce.c	/^int		rec_bruteforce(t_tabs *tab, int *seed)$/;"	f
@@ -180,5 +179,5 @@ t_op	inc/push_swap.h	/^typedef	struct s_op t_op;$/;"	t	typeref:struct:s_op
 t_solution	inc/instant.h	/^typedef struct s_solution t_solution;$/;"	t	typeref:struct:s_solution
 t_tab	inc/push_swap.h	/^}				t_tab;$/;"	t	typeref:struct:s_tab
 t_tabs	inc/bf_header.h	/^}               t_tabs;$/;"	t	typeref:struct:s_tabs
-usefull_cmb	src/bf/bf_main.c	/^int     usefull_cmb(int *cmb, int head)$/;"	f
+usefull_cmb	src/bf/old/bf_main.c	/^int     usefull_cmb(int *cmb, int head)$/;"	f
 write_op	src/commons/chain.c	/^void	write_op(int op)$/;"	f

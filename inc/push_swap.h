@@ -2,7 +2,7 @@
 # define PUSH_SWAP_H
 
 # include "binop.h"
-# include <stdio.h>
+# include <stdlib.h>
 # define PIVOT 1
 
 typedef	struct s_elem t_elem;
@@ -29,6 +29,8 @@ typedef struct	s_tab
 	t_list	*b;
 	t_op	*ops;
 }				t_tab;
+
+void	ft_bzero(void *s, size_t n);
 
 /* init */
 t_list	*init_list_a(int ac, char **av);

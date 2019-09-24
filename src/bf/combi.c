@@ -1,5 +1,14 @@
-//#include "instant.h"
-//#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   combi.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/24 13:14:02 by vlaroque          #+#    #+#             */
+/*   Updated: 2019/09/24 13:37:59 by vlaroque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int		combination_five(int comb)
 {
@@ -27,30 +36,30 @@ int		combination_five(int comb)
 
 char	*solution_five(int index)
 {
-	static char sol[120][15] = {
-		"aaaa", "aaasa", "aasaa", "aaqsapa", "aaqaap", "aaqsaap",
-		"asaaa", "asaasa", "aqsapaa", "aqqsappaa", "aqsapasa", "aqquapaap",
-		"aqaapa", "aqasapa", "aqsaapa", "aqqsapapa", "aqqaappa", "aqqsaappa",
-		"aqaaap", "aqasaap", "aqsaaap", "aqqsapaap", "aqqaapap", "aqqsaapap",
-		"saaaa", "saaasa", "saasaa", "saaqsapa", "saaqaap", "saaqsaap",
-		"qsapaaa", "qsapaasa", "qqsappaaa", "qqqsapppaaa", "qqsappaasa",
-		"qqqsapppaasa", "qsapasaa", "qqaupaapa", "qquapaapa", "qqquapppaaa",
-		"qqsaupaapa", "qqqsapupaapa", "sqsaaaap", "qqaupaaap", "qquapaaap",
-		"qqqspuapaaap", "qqsaupaaap", "qqqsapupaaap", "qaapaa", "qaapasa",
-		"qasapaa", "qaqsappaa", "qasapasa", "qaquapaap", "qsaapaa", "qsaapasa",
-		"qqsapapaa", "qqqsappapaa", "qqsapapasa", "qqqsappapasa", "qqaappaa",
-		"qqasappaa", "qqsaappaa", "qqqsapappaa", "qqqaapppaa", "qqqsaapppaa",
-		"qqaappasa", "qqauapaap", "qquaapaap", "qqqspuaapaap", "qqsauapaap",
-		"qqquaapppaa", "qaaapa", "qaasapa", "qasaapa", "qaqsapapa", "qaqaappa",
-		"qaqsaappa", "qsaaapa", "qsaasapa", "qqsapaapa", "qqqsappaapa",
-		"qqsapasapa", "qqquapaappa", "qqaapapa", "qqasapapa", "qqsaapapa",
-		"qqqsapapapa", "qqqaappapa", "qqqsaappapa", "qqaaappa", "qqasaappa",
-		"qqsaaappa", "qqqsapaappa", "qqqaapappa", "qqqsaapappa", "qaaaap",
-		"qaasaap", "qasaaap", "qaqsapaap", "qaqaapap", "qaqsaapap", "qsaaaap",
-		"qsaasaap", "qqsapaaap", "qqqsappaaap", "qqsapasaap", "qqquapaapap",
-		"qqaapaap", "qqasapaap", "qqsaapaap", "qqqsapapaap", "qqqaappaap",
-		"qqqsaappaap", "qqaaapap", "qqasaapap", "qqsaaapap", "qqqsapaapap",
-		"qqqaapapap", "qqqsaapapap"};
+	static char sol[120][15] = {"aaaa", "aaasa", "aasaa", "aaqsapa", "aaqaap",
+		"aaqsaap", "asaaa", "asaasa", "aqsapaa", "aqqsappaa", "aqsapasa",
+		"aqquapaap", "aqaapa", "aqasapa", "aqsaapa", "aqqsapapa", "aqqaappa",
+		"aqqsaappa", "aqaaap", "aqasaap", "aqsaaap", "aqqsapaap", "aqqaapap",
+		"aqqsaapap", "saaaa", "saaasa", "saasaa", "saaqsapa", "saaqaap",
+		"saaqsaap", "qsapaaa", "qsapaasa", "qqsappaaa", "qqqsapppaaa",
+		"qqsappaasa", "qqqsapppaasa", "qsapasaa", "qqaupaapa", "qquapaapa",
+		"qqquapppaaa", "qqsaupaapa", "qqqsapupaapa", "sqsaaaap", "qqaupaaap",
+		"qquapaaap", "qqqspuapaaap", "qqsaupaaap", "qqqsapupaaap", "qaapaa",
+		"qaapasa", "qasapaa", "qaqsappaa", "qasapasa", "qaquapaap", "qsaapaa",
+		"qsaapasa", "qqsapapaa", "qqqsappapaa", "qqsapapasa", "qqqsappapasa",
+		"qqaappaa", "qqasappaa", "qqsaappaa", "qqqsapappaa", "qqqaapppaa",
+		"qqqsaapppaa", "qqaappasa", "qqauapaap", "qquaapaap", "qqqspuaapaap",
+		"qqsauapaap", "qqquaapppaa", "qaaapa", "qaasapa", "qasaapa",
+		"qaqsapapa", "qaqaappa", "qaqsaappa", "qsaaapa", "qsaasapa",
+		"qqsapaapa", "qqqsappaapa", "qqsapasapa", "qqquapaappa", "qqaapapa",
+		"qqasapapa", "qqsaapapa", "qqqsapapapa", "qqqaappapa", "qqqsaappapa",
+		"qqaaappa", "qqasaappa", "qqsaaappa", "qqqsapaappa", "qqqaapappa",
+		"qqqsaapappa", "qaaaap", "qaasaap", "qasaaap", "qaqsapaap", "qaqaapap",
+		"qaqsaapap", "qsaaaap", "qsaasaap", "qqsapaaap", "qqqsappaaap",
+		"qqsapasaap", "qqquapaapap", "qqaapaap", "qqasapaap", "qqsaapaap",
+		"qqqsapapaap", "qqqaappaap", "qqqsaappaap", "qqaaapap", "qqasaapap",
+		"qqsaaapap", "qqqsapaapap", "qqqaapapap", "qqqsaapapap"};
+
 	return (sol[index]);
 }
 

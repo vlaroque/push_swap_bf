@@ -6,7 +6,7 @@
 /*   By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 01:23:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 22:29:44 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/24 20:27:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		indexator(t_list *list)
 	i = -1;
 	while (++i < list->size)
 		tab[i]->index = i;
+	free(tab);
 	return (1);
 }
 

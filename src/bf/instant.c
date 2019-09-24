@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:20:15 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/15 22:54:54 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/24 13:37:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static char		*little_solution(int comb)
 {
-	int			i;
-	static		t_solution solutions[33] = {
+	int					i;
+	static t_solution	solutions[33] = {
 		{1, ""}, {12, "a"}, {21, "sa"}, {123, "aa"}, {132, "asa"}, {213, "saa"},
 		{231, "qsapa"}, {312, "qaap"}, {321, "qsaap"}, {1234, "aaa"},
 		{1243, "aasa"}, {1324, "asaa"}, {1342, "aqsapa"}, {1423, "aqaap"},

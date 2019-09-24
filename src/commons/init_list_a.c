@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 22:32:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 22:42:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/24 20:45:44 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_list			*init_list_a(int ac, char **av)
 	i = 1;
 	if (!(list = (t_list *)malloc(sizeof(t_list))))
 		exit(1);
+	ft_bzero(list, sizeof(t_list));
 	list->size = 0;
 	while (i < ac)
 	{
