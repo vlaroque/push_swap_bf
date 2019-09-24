@@ -6,7 +6,7 @@
 #    By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/23 02:06:55 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/24 12:44:34 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,16 +57,28 @@ CHECK_OBJ = $(addprefix $(OBJ_PATH)/,$(CHECK_SRC_FILES:.c=.o))
 all : $(NAME1) $(NAME2)
 
 $(NAME1) : $(PUSH_OBJ)
-	$(CC) $(PUSH_OBJ) -g -o $@ $(CFLAGS)
+	@echo "\tLinking $@'s files"
+	@$(CC) $(PUSH_OBJ) -g -o $@ $(CFLAGS)
+	@echo "\tDone !"
 
 $(NAME2) : $(CHECK_OBJ)
-	$(CC) $(CHECK_OBJ) -g -o $@ $(CFLAGS)
+	@echo "\tLinking $@'s files"
+	@$(CC) $(CHECK_OBJ) -g -o $@ $(CFLAGS)
+	@echo "\tDone !"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
-	echo 'compiling $@'
-	$(CC) $(CFL_PATH) -g -I $(INC_PATH) -MMD -c $< -o $@
+	@echo "\tCompiling $@"
+	@$(CC) $(CFL_PATH) -g -I $(INC_PATH) -MMD -c $< -o $@
 
 clean :
-	echo 'cleaning'
-	rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)
+	@echo "\tCleaning..."
+	@rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)
+	@echo "\tDone !"
+
+fclean : clean
+	@rm -Rf $(NAME1) $(NAME2)
+
+re :
+	$(MAKE) fclean
+	$(MAKE)

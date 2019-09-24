@@ -6,10 +6,11 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 01:48:37 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/23 02:12:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/23 10:13:03 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 
 int		a_rev_rotation(t_tab *tab)

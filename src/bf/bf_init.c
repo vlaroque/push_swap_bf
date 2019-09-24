@@ -5,12 +5,9 @@
  * a_lock don't care about the last position
  */
 
-void	read_seed(int *seed, t_tab *tab)
+void	read_seed(int *seed, t_tab *tab, int i)
 {
-	int i;
-
-	i = 0;
-	while(seed[i] && i < SEEDLEN)
+	while (seed[++i] && i < SEEDLEN)
 	{
 		if (seed[i] == PA)
 			push_a(tab);
@@ -34,11 +31,10 @@ void	read_seed(int *seed, t_tab *tab)
 			revrotate_b(tab);
 		else if (seed[i] == RRR)
 			rrevrotate(tab);
-		i++;
 	}
 }
 
-int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
+int		init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
@@ -46,7 +42,7 @@ int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		tab.a[cmb[i] - 1] = 1 << i;
 		i++;
@@ -56,11 +52,11 @@ int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles)
 	tab.a_lock = 0;
 	tab.a_head = 1;
 	rec_bruteforce(&tab, seed);
-	read_seed(seed, piles);
+	read_seed(seed, piles, -1);
 	return (1);
 }
-
-int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
+/*
+int		init_a_locked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
@@ -68,7 +64,7 @@ int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		tab.a[cmb[i] - 1] = 1 << i;
 		i++;
@@ -82,7 +78,7 @@ int     init_a_locked_bf(int *cmb, int len, t_tab *piles)
 	return (1);
 }
 
-int     init_b_locked_bf(int *cmb, int len, t_tab *piles)
+int		init_b_locked_bf(int *cmb, int len, t_tab *piles)
 {
 	int		i;
 	t_tabs	tab;
@@ -90,7 +86,7 @@ int     init_b_locked_bf(int *cmb, int len, t_tab *piles)
 
 	bzero(&tab, sizeof(t_tabs));
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		tab.a[cmb[i] - 1] = 1 << i;
 		i++;
@@ -101,4 +97,4 @@ int     init_b_locked_bf(int *cmb, int len, t_tab *piles)
 	tab.a_head = 1;
 	rec_bruteforce(&tab, seed);
 	return (1);
-}
+}*/
