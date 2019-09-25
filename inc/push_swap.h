@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 
 # include "binop.h"
+# include <SDL.h>
 # include <stdlib.h>
 # define PIVOT 1
 
@@ -113,5 +114,23 @@ int		instant_bf(int comb, t_tab *tab);
 ** Brutefoce
 */
 int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles);
+
+/*
+** render
+*/
+int		render(t_tab *tab);
+typedef struct s_data t_data;
+struct	s_data
+{
+	SDL_Window		*win;
+	SDL_Renderer	*render;
+	int				index_max;
+	int				y_max;
+	int				x_max;
+	int				max_elem;
+	int				elem_h;
+	int				elem_width_max;
+	int				elem_half_max;
+};
 
 #endif

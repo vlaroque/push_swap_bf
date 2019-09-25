@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 14:12:12 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/25 20:59:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int				main(int ac, char **av)
 	ptr = &tab;
 	if (reader(ptr))
 		return (-1);
+	render(&tab);
 	if (ptr->b->size == 0 && is_ordered(ptr->a))
 		write(1, "OK\n", 3);
 	else

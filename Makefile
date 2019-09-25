@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/24 19:52:13 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/25 21:21:15 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_COMMON = init_list_a.c list_commons.c quicksort.c init_check.c\
 			 init_errors.c op_p_s.c op_r_rr.c op_rrr.c  list_operations.c \
 			 chain.c free_struct.c ft_bzero.c
 
-SRC_CHECK = checker.c
+SRC_CHECK = checker.c render.c
 
 # PATH
 
@@ -63,13 +63,13 @@ $(NAME1) : $(PUSH_OBJ)
 
 $(NAME2) : $(CHECK_OBJ)
 	@echo "\tLinking $@'s files"
-	@$(CC) $(CHECK_OBJ) -g -o $@ $(CFLAGS)
+	@$(CC) $(CHECK_OBJ) -g -I ./src/SDL2.framework/Headers -rpath @loader_path/src/ -F ./src -framework SDL2 -o $@ $(CFLAGS)
 	@echo "\tDone !"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	@echo "\tCompiling $@"
-	@$(CC) $(CFL_PATH) -g -I $(INC_PATH) -MMD -c $< -o $@
+	@$(CC) $(CFL_PATH) -g -I $(INC_PATH) -I ./src/SDL2.framework/Headers -rpath @loader_path/src/ -F ./src -framework SDL2  -MMD -c $< -o $@
 
 clean :
 	@echo "\tCleaning..."
