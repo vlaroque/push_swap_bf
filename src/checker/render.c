@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 11:14:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/25 21:53:30 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/27 11:56:49 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,62 +30,87 @@ int colorize_win(SDL_Renderer *render, SDL_Color color)
 	return 0;
 }
 
-int		print_pile(t_tab *tab, t_data *data, int s)
-{
-	int		i;
-	int		xm;
-	int		y;
-	t_elem	*head;
-	SDL_Color	orange = {255, 127, 40, 255};
-	SDL_Rect	rect;
-	int res;
+/********************************************/
 
-	write(1, "lol1\n",5);
+SDL_Color	rect_col(int index, int index_max)
+{
+	int				col;
+	SDL_Color		color;
+
+	ft_bzero(&color, sizeof(SDL_Color));
+	col = index * 1529 / index_max;
+	SDL_Color	orange = {255, 127, 40, 255};
+	if (col <= 256 || col >= 1275)
+		color.r = 255;
+	else if(col > 255 && col < 510)
+		color.r = -(col - 510);
+	else if (col > 1020 && col < 1275)
+		color.r = col - 1020;
+	if (col >= 255 && col <= 765)
+		color.g = 255;
+	else if (col > 0 && col < 255)
+		color.g = col - 255;
+	else if (col > 765 && col < 1020)
+		color.g = -(col - 765);
+	if (col >= 765 && col <= 1275)
+		color.b = 255;
+	else if (col > 510 && col < 765)
+		color.b = col - 510;
+	else if (col > 1275 && col < 1530)
+		color.b = -(col - 1530);
+	return(color);
+}
+
+int		draw_rect(t_data *data, SDL_Rect rect, SDL_Color col)
+{
+	if(SDL_SetRenderDrawColor(data->render, col.r, col.g, col.b, col.a))
+		return (-1);
+	SDL_RenderFillRect(data->render, &rect);
+}
+
+int		print_pile(t_list *a, t_data *data, int xm)
+{
+	int			i;
+	int			y;
+	t_elem		*head;
+	SDL_Rect	rect;
+
 	rect.h = data->elem_h;
 	i = 0;
-	xm = data->y_max / 4;
-	y = (data->y_max - (tab->a->size * data->elem_h)) / 2;
-	head = tab->a->start;
-	write(1, "lol2\n", 5);
-	res = SDL_SetRenderDrawColor(data->render, orange.r, orange.g, orange.b, orange.a);
-	fprintf(stderr, "Erreur SDL_SetRenderDrawColor : %s", SDL_GetError());
-	printf("res = %d\n", res);
-	/*{
-	write(1, "lol9\n", 5);
-		return (-1);
-	}*/
-	write(1, "lol3\n", 5);
-	while (i < tab->a->size)
+	y = (data->y_max - (a->size * data->elem_h)) / 2;
+	head = a->start;
+	while (i < a->size)
 	{
 		rect.y = y;
-		rect.w = 1 + (((data->elem_half_max * 2) * head->index) / data->index_max);
+		rect.w = 1 + (((data->elem_half_max * 2) * (head->index + 1)) / (data->index_max + 1));
 		rect.x = xm - (rect.w / 2);
-		printf("rest = x %d, y %d, h %d, w %d\n", rect.x, rect.y, rect.h, rect.w);
-		SDL_RenderDrawRect(data->render, &rect);
+		draw_rect(data, rect, rect_col(head->index, data->index_max));
 		head = head->next;
 		y += data->elem_h;
 		i++;
 	}
-	write(1, "lol4\n", 5);
-	SDL_RenderPresent(data->render);
 	return (1);
 }
-/*
+
 int		show_a_snap(t_tab *tab, t_data *data)
 {
-	
+	print_pile(tab->a, data, data->x_max / 4);
+	print_pile(tab->b, data, (data->x_max * 3) / 4);
+	SDL_RenderPresent(data->render);
+			return (1);
 }
-*/
+
+/********************************************/
+
 int		init_vars(t_tab *tab, t_data *data)
 {
 	data->max_elem = tab->a->size;
-	data->y_max = 2500;
-	data->x_max = 1400;
+	data->y_max = 1400;
+	data->x_max = 2500;
 	data->elem_h = (data->y_max - 100) / data->max_elem;
 	data->elem_width_max = data->x_max / 3;
 	data->elem_half_max = data->elem_width_max / 2;
 	data->index_max = data->max_elem - 1;
-	printf("\nmax_elem = %d, ymax %d, xmax %d, heigh %d, widthmax %d, index_max %d\n",data->max_elem, data->y_max, data->x_max, data->elem_h, data->elem_width_max, data->index_max);
 	return (0);
 }
 
@@ -104,21 +129,15 @@ int		render(t_tab *tab)
 	if(!(data.render = SDL_CreateRenderer(data.win, -1, 0)))
 		return(end(1));
 	colorize_win(data.render, black);
-	printf("lol2\n");
 	init_vars(tab, &data);
-	print_pile(tab, &data, 1);
-
+	SDL_RaiseWindow(data.win);
+	push_b(tab);
+	show_a_snap(tab, &data);
 	SDL_PollEvent(&event);
-	SDL_Delay(3000);
+	SDL_Delay(5000);
 
 	SDL_DestroyRenderer(data.render);
 	SDL_DestroyWindow(data.win);
 	SDL_Quit();
 	return (0);
 }
-/*
-int		main(int ac, char **av)
-{
-	render(1);
-	return (0);
-}*/

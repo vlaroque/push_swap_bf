@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/25 20:59:51 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/27 11:56:43 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,23 @@ int				reader(t_tab *tab)
 				return (-1);
 		}
 	}
+	return (0);
+}
+
+int				visual_checker(int ac, char **av)
+{
+	t_tab		tab;
+
+	if (!(tab.a = init_list_a(ac, av)))
+		return (error(1));
 }
 
 int				main(int ac, char **av)
 {
 	t_tab		tab;
-	t_tab		*ptr;
 
+	if (av[1][0] == '-' && av[1][1] == 'v')
+		return(visual_checker(ac, av));
 	if (!(tab.a = init_list_a(ac, av)))
 		return (error(1));
 	tab.b = init_empty_list();
