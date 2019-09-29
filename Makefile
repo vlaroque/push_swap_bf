@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/25 21:21:15 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/09/29 11:09:48 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_COMMON = init_list_a.c list_commons.c quicksort.c init_check.c\
 			 init_errors.c op_p_s.c op_r_rr.c op_rrr.c  list_operations.c \
 			 chain.c free_struct.c ft_bzero.c
 
-SRC_CHECK = checker.c render.c
+SRC_CHECK = checker.c render.c visual_reader.c snap.c
 
 # PATH
 

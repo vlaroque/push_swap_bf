@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/27 11:56:43 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/29 10:59:06 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ int				visual_checker(int ac, char **av)
 
 	if (!(tab.a = init_list_a(ac, av)))
 		return (error(1));
+	tab.b = init_empty_list();
+	if (visual_reader(&tab))
+		return (-1);
+	render(&tab);
+	free_op_list(&(tab.ops));
+	free_both_lists(&tab);
 }
 
 int				main(int ac, char **av)
@@ -93,19 +99,17 @@ int				main(int ac, char **av)
 	t_tab		tab;
 
 	if (av[1][0] == '-' && av[1][1] == 'v')
-		return(visual_checker(ac, av));
+		return(visual_checker(ac - 1, av + 1));
 	if (!(tab.a = init_list_a(ac, av)))
 		return (error(1));
 	tab.b = init_empty_list();
-	ptr = &tab;
-	if (reader(ptr))
+	if (reader(&tab))
 		return (-1);
-	render(&tab);
-	if (ptr->b->size == 0 && is_ordered(ptr->a))
+	if (tab.b->size == 0 && is_ordered(tab.a))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_op_list(&(ptr->ops));
-	free_both_lists(ptr);
+	free_op_list(&(tab.ops));
+	free_both_lists(&tab);
 	return (0);
 }
