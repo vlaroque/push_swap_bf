@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 11:14:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/29 14:10:44 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/30 21:49:00 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		show_op(t_tab *tab, int i)
 	while (i)
 	{
 		if (head == 0)
-			return(0);
+			return (0);
 		head = head->next;
 		i--;
 	}
@@ -96,10 +96,39 @@ int		play(t_tab *tab, t_data *data)
 		apply_op(tab, show_op(tab, i));
 		show_a_snap(tab, data);
 		SDL_Delay(10);
-		SDL_PollEvent(&event);
+		if (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT)
+				exit(0);
+			if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
+				return (0);
+		}
 		i++;
 	}
-	SDL_PollEvent(&event);
+	return (0);
+}
+
+int		eventer(t_tab *tab, t_data *data)
+{
+	SDL_Event		event;
+	int				i;
+	int				quit;
+
+	i = 0;
+	quit = 0;
+	while (!quit)
+	{
+		printf("BOUCLE\n");
+		show_a_snap(tab, data);
+		SDL_WaitEvent(&event);
+		if (event.type == SDL_QUIT)
+			quit = 1;
+		if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
+		{
+			printf("   BOUCLE in\n");
+			play(tab, data);
+		}
+	}
 	return (0);
 }
 
@@ -118,8 +147,9 @@ int		render(t_tab *tab)
 	init_vars(tab, &data);
 	SDL_RaiseWindow(data.win);
 	//show_a_snap(tab, &data);
-	play(tab, &data);
-	SDL_Delay(5000);
+	//play(tab, &data);
+	eventer(tab, &data);
+	//SDL_Delay(5000);
 
 	SDL_DestroyRenderer(data.render);
 	SDL_DestroyWindow(data.win);

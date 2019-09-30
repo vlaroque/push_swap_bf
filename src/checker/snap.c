@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 10:50:21 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/29 12:45:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/09/30 21:25:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int		black_window(SDL_Renderer *render)
 		return (-1);
 	if (SDL_RenderClear(render))
 		return (-1);
-	//SDL_RenderPresent(render);
-	printf("one \n");
 	return 0;
 }
 
