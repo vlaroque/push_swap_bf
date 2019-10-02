@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/09/29 11:09:48 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/10/02 14:48:22 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME1 = push_swap
 NAME2 = checker
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g3
 
 # SOURCES
 

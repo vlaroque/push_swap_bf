@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/29 10:59:06 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/02 14:59:04 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,27 @@ int				visual_checker(int ac, char **av)
 {
 	t_tab		tab;
 
+	ft_bzero(&tab, sizeof(t_tab));
 	if (!(tab.a = init_list_a(ac, av)))
 		return (error(1));
 	tab.b = init_empty_list();
 	if (visual_reader(&tab))
 		return (-1);
 	render(&tab);
-	free_op_list(&(tab.ops));
+	write(1, "op\n", 3);
+	dprintf(2, "first : %p\n", tab.ops);
+	free_op_list(&(tab).ops);
+	write(1, "bo\n", 3);
 	free_both_lists(&tab);
+	write(1, "end\n", 4);
+	return (0);
 }
 
 int				main(int ac, char **av)
 {
 	t_tab		tab;
 
+	ft_bzero(&tab, sizeof(t_tab));
 	if (av[1][0] == '-' && av[1][1] == 'v')
 		return(visual_checker(ac - 1, av + 1));
 	if (!(tab.a = init_list_a(ac, av)))

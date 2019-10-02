@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 14:52:58 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/24 19:51:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/02 15:14:16 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_bzero(void *s, size_t n)
 	{
 		*((long long int *)s) = 0x00;
 		n = n - 8;
-		s = (long long int *)s + 1;
+		s += 8;
 	}
 	while (n > 0)
 	{

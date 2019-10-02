@@ -132,6 +132,7 @@ struct	s_data
 	int				elem_h;
 	int				elem_width_max;
 	int				elem_half_max;
+	int				ops_max;
 };
 
 int		show_a_snap(t_tab *tab, t_data *data);
