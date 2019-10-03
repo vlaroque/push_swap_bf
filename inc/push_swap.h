@@ -117,7 +117,7 @@ int     init_a_unlocked_bf(int *cmb, int len, t_tab *piles);
 /*
 ** render
 */
-int		render(t_tab *tab);
+int		rerender(t_tab *tab);
 int		visual_reader(t_tab *tab);
 
 typedef struct s_data t_data;
@@ -136,4 +136,7 @@ struct	s_data
 };
 
 int		show_a_snap(t_tab *tab, t_data *data);
+int		eventer(t_tab *tab, t_data *data);
+int		show_op(t_tab *tab, int i);
+
 #endif

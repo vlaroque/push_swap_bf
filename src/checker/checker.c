@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/02 14:59:04 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:09:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,9 @@ int				visual_checker(int ac, char **av)
 	tab.b = init_empty_list();
 	if (visual_reader(&tab))
 		return (-1);
-	render(&tab);
-	write(1, "op\n", 3);
-	dprintf(2, "first : %p\n", tab.ops);
+	rerender(&tab);
 	free_op_list(&(tab).ops);
-	write(1, "bo\n", 3);
 	free_both_lists(&tab);
-	write(1, "end\n", 4);
 	return (0);
 }
 

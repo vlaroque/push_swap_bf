@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 19:43:41 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/02 14:47:41 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:25:24 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	free_op_list(t_op **begin)
 	head = *begin;
 	while (head != NULL)
 	{
-		dprintf(2, "second : %p\n", head);
-		dprintf(2, "second nextx : %p\n", head->next);
 		next = head->next;
 		free(head);
 		head = next;
