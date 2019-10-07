@@ -46,6 +46,7 @@ int		post_op(t_list *list);
 int		is_ordered(t_list *list);
 void	free_list(t_list *list);
 void	free_both_lists(t_tab *tab);
+int		error(int i);
 
 /* list operations */
 int		rotate(t_list *list);
@@ -133,6 +134,7 @@ struct	s_data
 	int				elem_width_max;
 	int				elem_half_max;
 	int				ops_max;
+	int				delay;
 };
 
 int		show_a_snap(t_tab *tab, t_data *data);

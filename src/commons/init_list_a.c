@@ -6,10 +6,11 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 22:32:52 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/24 20:45:44 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/07 15:12:51 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "push_swap.h"
 
@@ -42,12 +43,11 @@ static int		add_to_list(t_list *list, int nbr)
 	return (0);
 }
 
-static int		read_arg_atoi(char *str, int *i, int *nbr)
+static int		read_arg_atoi(char *str, int *i, int *nbr, long long sign)
 {
-	long long	sign;
+	long long	lng_nbr;
 
-	sign = 1;
-	*nbr = 0;
+	lng_nbr = 0;
 	while (str[*i] && str[*i] == ' ')
 		(*i)++;
 	if (str[*i] && (str[*i] == '-' || str[*i] == '+'))
@@ -60,14 +60,14 @@ static int		read_arg_atoi(char *str, int *i, int *nbr)
 		return (-1);
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		*nbr = *nbr * 10 + (str[*i] - '0');
-		if (*nbr * sign > 2147483647 || *nbr * sign < -2147483648)
+		lng_nbr = lng_nbr * 10 + (str[*i] - '0');
+		if (lng_nbr * sign > 2147483647 || lng_nbr * sign < -2147483648)
 			return (-1);
 		(*i)++;
 	}
 	while (str[*i] && str[*i] == ' ')
 		(*i)++;
-	*nbr = (int)(*nbr * sign);
+	*nbr = (int)(lng_nbr * sign);
 	return (0);
 }
 
@@ -79,7 +79,7 @@ static int		read_arg(t_list *list, char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (read_arg_atoi(str, &i, &nbr))
+		if (read_arg_atoi(str, &i, &nbr, 1))
 			return (-1);
 		if (add_to_list(list, nbr))
 			return (-1);
@@ -101,6 +101,7 @@ t_list			*init_list_a(int ac, char **av)
 	{
 		if (read_arg(list, av[i]))
 		{
+			write(2, "Error\n", 6);
 			free_list(list);
 			return (NULL);
 		}
@@ -108,6 +109,7 @@ t_list			*init_list_a(int ac, char **av)
 	}
 	if (!(post_op(list)))
 	{
+		write(2, "Error\n", 6);
 		free_list(list);
 		return (NULL);
 	}

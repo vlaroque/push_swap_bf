@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/24 20:08:17 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/07 17:22:01 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int		op_list_opti(t_op **begin)
 	int			res;
 
 	res = 0;
-	if (begin == NULL)
+	if (*begin == NULL)
 		return (0);
 	head = *begin;
 	prev = begin;
@@ -85,14 +85,19 @@ int				main(int ac, char **av)
 	t_tab		*ptr;
 
 	tab.ops = NULL;
+	if (ac < 1)
+		return (0);
 	if (!(tab.a = init_list_a(ac, av)))
 		return (0);
 	tab.b = init_empty_list();
 	ptr = &tab;
-	algo(ptr);
-	while (op_list_opti(&(ptr->ops)))
-		;
-	op_list_read(&(ptr->ops));
+	if (!(is_ordered(tab.a) && tab.b->size == 0))
+	{
+		algo(ptr);
+		while (op_list_opti(&(ptr->ops)))
+			;
+		op_list_read(&(ptr->ops));
+	}
 	free_op_list(&(ptr->ops));
 	free_both_lists(ptr);
 	return (0);

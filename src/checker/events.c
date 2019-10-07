@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 16:43:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/03 17:05:06 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/04 11:42:38 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int		play(t_tab *tab, t_data *data, int *i)
 	{
 		apply_op(tab, show_op(tab, *i));
 		show_a_snap(tab, data);
-		SDL_Delay(10);
+		SDL_Delay(data->delay);
 		(*i)++;
 		if (SDL_PollEvent(&event))
 		{
@@ -90,6 +90,7 @@ static int		go_to(t_tab *tab, t_data *data, int *i, int dir)
 	else
 		while (*i > 0)
 			apply_op(tab, reverse(show_op(tab, --(*i))));
+	return (0);
 }
 
 int				eventer(t_tab *tab, t_data *data)

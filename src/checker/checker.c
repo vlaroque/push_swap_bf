@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/03 15:09:28 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/07 16:25:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int				visual_checker(int ac, char **av)
 
 	ft_bzero(&tab, sizeof(t_tab));
 	if (!(tab.a = init_list_a(ac, av)))
-		return (error(1));
+		return (0);
 	tab.b = init_empty_list();
 	if (visual_reader(&tab))
 		return (-1);
@@ -101,13 +101,19 @@ int				main(int ac, char **av)
 	t_tab		tab;
 
 	ft_bzero(&tab, sizeof(t_tab));
+	if (ac < 2)
+		return (0);
 	if (av[1][0] == '-' && av[1][1] == 'v')
-		return(visual_checker(ac - 1, av + 1));
+	{
+		if (ac < 3)
+			return (0);
+		return (visual_checker(ac - 1, av + 1));
+	}
 	if (!(tab.a = init_list_a(ac, av)))
-		return (error(1));
+		return (0);
 	tab.b = init_empty_list();
 	if (reader(&tab))
-		return (-1);
+		return (error(-1));
 	if (tab.b->size == 0 && is_ordered(tab.a))
 		write(1, "OK\n", 3);
 	else

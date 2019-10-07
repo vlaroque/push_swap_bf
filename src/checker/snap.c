@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 10:50:21 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/30 21:25:37 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:21:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ SDL_Color	rect_col(int index, int index_max)
 
 	ft_bzero(&color, sizeof(SDL_Color));
 	col = index * 1529 / index_max;
-	SDL_Color	orange = {255, 127, 40, 255};
 	if (col <= 256 || col >= 1275)
 		color.r = 255;
-	else if(col > 255 && col < 510)
+	else if (col > 255 && col < 510)
 		color.r = -(col - 510);
 	else if (col > 1020 && col < 1275)
 		color.r = col - 1020;
@@ -39,18 +38,18 @@ SDL_Color	rect_col(int index, int index_max)
 		color.b = col - 510;
 	else if (col > 1275 && col < 1530)
 		color.b = -(col - 1530);
-	return(color);
+	return (color);
 }
 
-int		draw_rect(t_data *data, SDL_Rect rect, SDL_Color col)
+int			draw_rect(t_data *data, SDL_Rect rect, SDL_Color col)
 {
-	if(SDL_SetRenderDrawColor(data->render, col.r, col.g, col.b, col.a))
+	if (SDL_SetRenderDrawColor(data->render, col.r, col.g, col.b, col.a))
 		return (-1);
 	SDL_RenderFillRect(data->render, &rect);
 	return (0);
 }
 
-int		print_pile(t_list *a, t_data *data, int xm)
+int			print_pile(t_list *a, t_data *data, int xm)
 {
 	int			i;
 	int			y;
@@ -64,7 +63,8 @@ int		print_pile(t_list *a, t_data *data, int xm)
 	while (i < a->size)
 	{
 		rect.y = y;
-		rect.w = 1 + (((data->elem_half_max * 2) * (head->index + 1)) / (data->index_max + 1));
+		rect.w = 1 + (((data->elem_half_max * 2) * (head->index + 1))
+				/ (data->index_max + 1));
 		rect.x = xm - (rect.w / 2);
 		draw_rect(data, rect, rect_col(head->index, data->index_max));
 		head = head->next;
@@ -74,22 +74,20 @@ int		print_pile(t_list *a, t_data *data, int xm)
 	return (1);
 }
 
-int		black_window(SDL_Renderer *render)
+int			black_window(SDL_Renderer *render)
 {
 	if (SDL_SetRenderDrawColor(render, 0, 0, 0, 255))
 		return (-1);
 	if (SDL_RenderClear(render))
 		return (-1);
-	return 0;
+	return (0);
 }
 
-int		show_a_snap(t_tab *tab, t_data *data)
+int			show_a_snap(t_tab *tab, t_data *data)
 {
 	black_window(data->render);
 	print_pile(tab->a, data, data->x_max / 4);
 	print_pile(tab->b, data, (data->x_max * 3) / 4);
 	SDL_RenderPresent(data->render);
-			return (1);
+	return (1);
 }
-
-

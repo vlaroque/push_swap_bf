@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:14:02 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/24 13:37:59 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:04:55 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,4 @@ char	*solution_five(int index)
 		"qqsaaapap", "qqqsapaapap", "qqqaapapap", "qqqsaapapap"};
 
 	return (sol[index]);
-}
-
-int		main(void)
-{
-	int		index;
-	char	*str;
-
-	index = combination_five(54321);
-	str = solution_five(index);
-	printf("%s\n", str);
-	return (0);
 }

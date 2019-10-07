@@ -6,33 +6,11 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 23:04:42 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/22 23:05:55 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:07:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		dist_neg_pivot(t_list *list, int pivot)
-{
-	t_elem	*head;
-	int		dist;
-	int		res;
-
-	res = 0;
-	dist = 0;
-	head = list->start;
-	while (head->data != PIVOT)
-	{
-		if (head->index <= pivot)
-			res = dist;
-		head = head->prev;
-		dist++;
-		if (head == list->start)
-			break ;
-	}
-	printf("dist neg pivot = %d\n", res);
-	return (res);
-}
 
 int		dist_pivot(t_list *list, int pivot, char p_m)
 {
