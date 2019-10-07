@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/10/07 15:00:28 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/10/07 18:39:47 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ $(NAME2) : $(CHECK_OBJ)
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	@echo "\tCompiling $@"
-	@$(CC) $(CFL_PATH) -g -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
+	$(CC) $(CFL_PATH) -g -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
 
 clean :
 	@echo "\tCleaning..."
