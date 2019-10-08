@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 19:23:19 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 19:52:37 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 01:24:03 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "binop.h"
-# include <SDL.h>
 # include <stdlib.h>
 # define PIVOT 1
 
@@ -153,25 +152,5 @@ int						init_a_unlocked_bf(int *cmb, int len, t_tab *piles);
 */
 int						rerender(t_tab *tab);
 int						visual_reader(t_tab *tab);
-
-typedef struct s_data	t_data;
-struct					s_data
-{
-	SDL_Window		*win;
-	SDL_Renderer	*render;
-	int				index_max;
-	int				y_max;
-	int				x_max;
-	int				max_elem;
-	int				elem_h;
-	int				elem_width_max;
-	int				elem_half_max;
-	int				ops_max;
-	int				delay;
-};
-
-int						show_a_snap(t_tab *tab, t_data *data);
-int						eventer(t_tab *tab, t_data *data);
-int						show_op(t_tab *tab, int i);
 
 #endif

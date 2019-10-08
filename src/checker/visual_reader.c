@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 17:23:57 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 15:41:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 01:27:57 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include "push_swap.h"
+#include "visual_checker.h"
 
 static int		exec_read_four_v(char *buff, t_tab *tab)
 {

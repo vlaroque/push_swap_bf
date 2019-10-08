@@ -6,12 +6,13 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 16:43:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/04 11:42:38 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 01:30:31 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL.h>
 #include "push_swap.h"
+#include "visual_checker.h"
 
 int				apply_op(t_tab *tab, int op)
 {

@@ -6,12 +6,13 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 10:50:21 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/03 19:21:34 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 01:29:45 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL.h>
 #include "push_swap.h"
+#include "visual_checker.h"
 
 SDL_Color	rect_col(int index, int index_max)
 {
@@ -19,7 +20,7 @@ SDL_Color	rect_col(int index, int index_max)
 	SDL_Color		color;
 
 	ft_bzero(&color, sizeof(SDL_Color));
-	col = index * 1529 / index_max;
+	col = index * 1529 / (index_max + 1);
 	if (col <= 256 || col >= 1275)
 		color.r = 255;
 	else if (col > 255 && col < 510)
@@ -86,8 +87,10 @@ int			black_window(SDL_Renderer *render)
 int			show_a_snap(t_tab *tab, t_data *data)
 {
 	black_window(data->render);
-	print_pile(tab->a, data, data->x_max / 4);
-	print_pile(tab->b, data, (data->x_max * 3) / 4);
+	if (tab->a->size > 0)
+		print_pile(tab->a, data, data->x_max / 4);
+	if (tab->b->size > 0)
+		print_pile(tab->b, data, (data->x_max * 3) / 4);
 	SDL_RenderPresent(data->render);
 	return (1);
 }

@@ -6,12 +6,13 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 11:14:45 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 15:48:50 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 01:25:13 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <SDL.h>
 #include "push_swap.h"
+#include "visual_checker.h"
 
 int		end(int a)
 {

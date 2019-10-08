@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 16:25:37 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/08 06:17:08 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include "push_swap.h"
+#include "visual_checker.h"
 
 static int		exec_read_four(char *buff, t_tab *tab)
 {
@@ -89,7 +90,7 @@ int				visual_checker(int ac, char **av)
 		return (0);
 	tab.b = init_empty_list();
 	if (visual_reader(&tab))
-		return (-1);
+		return (error(-1));
 	rerender(&tab);
 	free_op_list(&(tab).ops);
 	free_both_lists(&tab);

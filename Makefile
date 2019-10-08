@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/10/07 19:23:26 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/10/08 03:45:19 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME1 = push_swap
 NAME2 = checker
 CC = gcc
-CFLAGS = -g3
+CFLAGS = -Wextra -Werror -Wall
 
 # SOURCES
 
@@ -53,32 +53,45 @@ CHECK_SRC_FILES += $(addprefix $(COMMON_PATH)/,$(SRC_COMMON))
 
 PUSH_OBJ = $(addprefix $(OBJ_PATH)/,$(PUSH_SRC_FILES:.c=.o))
 CHECK_OBJ = $(addprefix $(OBJ_PATH)/,$(CHECK_SRC_FILES:.c=.o))
+DEPENDS = $(PUSH_OBJ:%.o=%.d) 
+DEPENDS += $(CHECK_OBJ:%.o=%.d) 
 
+.PHONY: all
 all : $(NAME1) $(NAME2)
 
 $(NAME1) : $(PUSH_OBJ)
 	@echo "\tLinking $@'s files"
-	@$(CC) $(PUSH_OBJ) -g -o $@ $(CFLAGS)
+	@$(CC) $(PUSH_OBJ) -o $@ $(CFLAGS)
 	@echo "\tDone !"
 
 $(NAME2) : $(CHECK_OBJ)
 	@echo "\tLinking $@'s files"
-	@$(CC) $(CHECK_OBJ) -g -I./src/SDL2.framework/Headers -rpath @loader_path/src/ -F ./src -framework SDL2 -o $@ $(CFLAGS)
+	@$(CC) $(CHECK_OBJ) -I./src/SDL2.framework/Headers -rpath @loader_path/src/ -F ./src -framework SDL2 -o $@ $(CFLAGS)
 	@echo "\tDone !"
 
+-include $(DEPENDS)
+$(OBJ_PATH)/checker/%.o : $(SRC_PATH)/checker/%.c
+	@mkdir -p $(@D)
+	@echo "\tCompiling $@"
+	@$(CC) -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
+
+-include $(DEPENDS)
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	@echo "\tCompiling $@"
-	$(CC) $(CFL_PATH) -g -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
+	@$(CC) -I$(INC_PATH) -MMD -c $< -o $@
 
+.PHONY: clean
 clean :
 	@echo "\tCleaning..."
 	@rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)
 	@echo "\tDone !"
 
+.PHONY: fclean
 fclean : clean
 	@rm -Rf $(NAME1) $(NAME2)
 
+.PHONY: re
 re :
 	$(MAKE) fclean
 	$(MAKE)
