@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 17:23:57 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/08 01:27:57 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 21:02:31 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int		exec_read_four_v(char *buff, t_tab *tab)
 {
 	if (!(buff[0] == 'r' && buff[1] == 'r'))
 		return (-1);
+	if (buff[3] != '\n')
+		return (rtrash(-1));
 	if (buff[2] == 'a' && buff[3] == '\n')
 		op_add_new(&(tab->ops), RRA);
 	else if (buff[2] == 'b' && buff[3] == '\n')
@@ -62,6 +64,8 @@ int				visual_reader(t_tab *tab)
 	while (1)
 	{
 		ret = read(0, buff, 3);
+		if (ret == -1)
+			continue;
 		if (ret == 0)
 			return (0);
 		if (ret != 3)
@@ -71,8 +75,7 @@ int				visual_reader(t_tab *tab)
 				return (-1);
 		if (buff[2] != '\n')
 		{
-			ret = read(0, buff + 3, 1);
-			if (ret != 1 && buff[3] != '\n')
+			if(!(ret = read(0, buff + 3, 1)))
 				return (-1);
 			if ((exec_read_four_v(buff, tab)))
 				return (-1);

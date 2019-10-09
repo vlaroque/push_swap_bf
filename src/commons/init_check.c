@@ -6,7 +6,7 @@
 /*   By: vlaroque <louregni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 01:23:08 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 15:20:07 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 20:28:57 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		indexator(t_list *list, int i)
 	t_elem	*elem;
 
 	elem = list->start;
-	if (!(tab = malloc(sizeof(t_elem *) * list->size)))
+	if (!(tab = (t_elem **)malloc(sizeof(t_elem *) * list->size)))
 		return (-1);
 	while (++i < list->size)
 	{

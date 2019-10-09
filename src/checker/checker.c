@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/09 18:28:45 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 21:02:33 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,8 @@ int				reader(t_tab *tab)
 				return (-1);
 		if (buff[2] != '\n')
 		{
-			if ((ret = read(0, buff + 3, 1)))
+			if (!(ret = read(0, buff + 3, 1)))
 				return (-1);
-			if (buff[3] != '\n')
-				return (rtrash(-1));
 			if (exec_read_four(buff, tab))
 				return (-1);
 		}

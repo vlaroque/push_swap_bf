@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 22:27:33 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/24 20:07:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 20:28:05 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_op	*op_new(int op)
 {
 	t_op	*new;
 
-	if (!(new = malloc(sizeof(t_op))))
+	if (!(new = (t_op *)malloc(sizeof(t_op))))
 		return (NULL);
 	ft_bzero(new, sizeof(t_op));
 	new->op = op;
