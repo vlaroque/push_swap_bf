@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/08 06:17:08 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:28:45 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static int		exec_read_four(char *buff, t_tab *tab)
 {
 	if (!(buff[0] == 'r' && buff[1] == 'r'))
 		return (-1);
-	if (buff[2] == 'a' && buff[3] == '\n')
+	if (buff[3] != '\n')
+		return (rtrash(-1));
+	if (buff[2] == 'a')
 		revrotate_a(tab);
-	else if (buff[2] == 'b' && buff[3] == '\n')
+	else if (buff[2] == 'b')
 		revrotate_b(tab);
-	else if (buff[2] == 'r' && buff[3] == '\n')
+	else if (buff[2] == 'r')
 		rrevrotate(tab);
 	else
 		return (-1);
@@ -62,23 +64,25 @@ int				reader(t_tab *tab)
 	while (1)
 	{
 		ret = read(0, buff, 3);
-		if (ret == 0)
+		if (ret == -1)
+			continue;
+		if (!ret)
 			return (0);
 		if (ret != 3)
 			return (-1);
 		if (buff[2] == '\n')
-			if ((exec_read_three(buff, tab)))
+			if (exec_read_three(buff, tab))
 				return (-1);
 		if (buff[2] != '\n')
 		{
-			ret = read(0, buff + 3, 1);
-			if (ret != 1 && buff[3] != '\n')
+			if ((ret = read(0, buff + 3, 1)))
 				return (-1);
-			if ((exec_read_four(buff, tab)))
+			if (buff[3] != '\n')
+				return (rtrash(-1));
+			if (exec_read_four(buff, tab))
 				return (-1);
 		}
 	}
-	return (0);
 }
 
 int				visual_checker(int ac, char **av)

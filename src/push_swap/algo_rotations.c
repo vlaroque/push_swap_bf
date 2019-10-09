@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 01:48:37 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/09/23 10:13:03 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:33:32 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int		a_rev_rotation(t_tab *tab)
 {
-	t_elem *elem;
-
 	while (tab->a->start->prev->data != PIVOT)
 		revrotate_a(tab);
 	return (0);
@@ -24,7 +22,6 @@ int		a_rev_rotation(t_tab *tab)
 
 int		a_rotation(t_tab *tab)
 {
-	t_elem	*elem;
 	int		i;
 
 	i = 0;

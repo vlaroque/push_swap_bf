@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/10/08 03:45:19 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/10/09 19:20:11 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,18 +73,19 @@ $(NAME2) : $(CHECK_OBJ)
 $(OBJ_PATH)/checker/%.o : $(SRC_PATH)/checker/%.c
 	@mkdir -p $(@D)
 	@echo "\tCompiling $@"
-	@$(CC) -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -I./src/SDL2.framework/Headers -F ./src -MMD -c $< -o $@
 
 -include $(DEPENDS)
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	@echo "\tCompiling $@"
-	@$(CC) -I$(INC_PATH) -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_PATH) -MMD -c $< -o $@
 
 .PHONY: clean
 clean :
 	@echo "\tCleaning..."
 	@rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)
+	@rm -Rf $(DEPENDS)
 	@echo "\tDone !"
 
 .PHONY: fclean

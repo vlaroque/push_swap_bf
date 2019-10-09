@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:22 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/07 18:33:36 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 18:32:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static int		op_modifier(t_op *head, t_op **prev)
 static int		op_list_opti(t_op **begin)
 {
 	t_op		*head;
-	t_op		*save;
 	t_op		**prev;
 	int			res;
 
