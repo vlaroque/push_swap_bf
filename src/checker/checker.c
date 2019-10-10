@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 22:49:29 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/09 21:02:33 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/10 05:48:58 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int				reader(t_tab *tab)
 		{
 			if (!(ret = read(0, buff + 3, 1)))
 				return (-1);
+			if (buff[3] != '\n')
+				return (rtrash(-1));
 			if (exec_read_four(buff, tab))
 				return (-1);
 		}
@@ -92,7 +94,10 @@ int				visual_checker(int ac, char **av)
 		return (0);
 	tab.b = init_empty_list();
 	if (visual_reader(&tab))
+	{
+		free_all(&tab);
 		return (error(-1));
+	}
 	rerender(&tab);
 	free_op_list(&(tab).ops);
 	free_both_lists(&tab);
@@ -113,7 +118,7 @@ int				main(int ac, char **av)
 		return (visual_checker(ac - 1, av + 1));
 	}
 	if (!(tab.a = init_list_a(ac, av)))
-		return (0);
+		return (free_all(&tab));
 	tab.b = init_empty_list();
 	if (reader(&tab))
 		return (error(-1));
@@ -121,7 +126,6 @@ int				main(int ac, char **av)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_op_list(&(tab.ops));
-	free_both_lists(&tab);
+	free_all(&tab);
 	return (0);
 }

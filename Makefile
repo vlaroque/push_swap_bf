@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/20 10:33:13 by vlaroque          #+#    #+#              #
-#    Updated: 2019/10/09 21:08:30 by vlaroque         ###   ########.fr        #
+#    Updated: 2019/10/10 06:50:48 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,12 +62,12 @@ all : $(NAME1) $(NAME2)
 $(NAME1) : $(PUSH_OBJ)
 	@echo "\tLinking $@'s files"
 	@$(CC) $(PUSH_OBJ) -o $@ $(CFLAGS)
-	@echo "\tDone !"
+	@echo "\t\tDone !"
 
 $(NAME2) : $(CHECK_OBJ)
 	@echo "\tLinking $@'s files"
 	@$(CC) $(CHECK_OBJ) -I./src/SDL2.framework/Headers -rpath @loader_path/src/ -F ./src -framework SDL2 -o $@ $(CFLAGS)
-	@echo "\tDone !"
+	@echo "\t\tDone !"
 
 -include $(DEPENDS)
 $(OBJ_PATH)/checker/%.o : $(SRC_PATH)/checker/%.c
@@ -86,7 +86,7 @@ clean :
 	@echo "\tCleaning..."
 	@rm -Rf $(PUSH_OBJ) $(CHECK_OBJ)
 	@rm -Rf $(DEPENDS)
-	@echo "\tDone !"
+	@echo "\t\tDone !"
 
 .PHONY: fclean
 fclean : clean
@@ -94,5 +94,5 @@ fclean : clean
 
 .PHONY: re
 re :
-	$(MAKE) fclean
-	$(MAKE)
+	@$(MAKE) fclean
+	@$(MAKE)

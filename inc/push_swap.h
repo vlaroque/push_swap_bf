@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 19:23:19 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/09 17:47:32 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/09 21:58:07 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void					printlist(t_list *list);
 void					quick_sort(t_elem **tab, int first, int last);
 int						error(int i);
 int						rtrash(int i);
+int						free_all(t_tab *tab);
 
 /*
 ** list commons

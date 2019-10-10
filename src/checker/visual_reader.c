@@ -6,7 +6,7 @@
 /*   By: vlaroque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 17:23:57 by vlaroque          #+#    #+#             */
-/*   Updated: 2019/10/09 21:02:31 by vlaroque         ###   ########.fr       */
+/*   Updated: 2019/10/10 05:55:52 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ int				visual_reader(t_tab *tab)
 				return (-1);
 		if (buff[2] != '\n')
 		{
-			if(!(ret = read(0, buff + 3, 1)))
+			if (!(ret = read(0, buff + 3, 1)))
 				return (-1);
+			if (buff[3] != '\n')
+				return (rtrash(-1));
 			if ((exec_read_four_v(buff, tab)))
 				return (-1);
 		}
 	}
-	return (0);
 }
